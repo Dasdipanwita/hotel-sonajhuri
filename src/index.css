@@ -1,0 +1,500 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1a4740;
+  --color-primary-dark: #0d3330;
+  --color-primary-light: #235c52;
+  --color-gold: #c9a84c;
+  --color-gold-light: #d4b870;
+  --color-gold-dark: #a8873c;
+  --color-cream: #faf8f3;
+  --color-cream-dark: #f0ebe0;
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-elegant: 'Cormorant Garamond', Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #fff;
+  color: #1a1a1a;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d3330;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9a84c;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4b870;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Gold divider line utility */
+.gold-line {
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #c9a84c, #d4b870, #c9a84c);
+  margin: 1rem 0;
+}
+
+/* Section label */
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #c9a84c;
+}
+
+/* Overlay gradient */
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 51, 48, 0.3) 0%,
+    rgba(13, 51, 48, 0.5) 50%,
+    rgba(13, 51, 48, 0.7) 100%
+  );
+}
+
+/* ── 3D Perspective Scene ───────────────────────────────── */
+.perspective-scene {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+/* Tilt card — GPU-composited layer */
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Shimmer on tilt — a subtle specular highlight layer */
+.tilt-card-shine {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--shine-x, 50%) var(--shine-y, 50%),
+    rgba(201, 168, 76, 0.12) 0%,
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+.tilt-card:hover .tilt-card-shine {
+  opacity: 1;
+}
+
+/* Hero parallax layers */
+.hero-parallax-layer {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Gallery perspective grid */
+.gallery-perspective {
+  perspective: 800px;
+}
+
+/* Depth shadow — adds cinematic depth to cards */
+.depth-shadow {
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 20px 40px -8px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(201, 168, 76, 0.05);
+  transition: box-shadow 0.4s ease;
+}
+.depth-shadow:hover {
+  box-shadow:
+    0 8px 16px -2px rgba(0, 0, 0, 0.4),
+    0 32px 60px -8px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(201, 168, 76, 0.15);
+}
+
+/* Float animation for decorative badge */
+@keyframes float-badge {
+  0%, 100% { transform: translateY(0px) rotate(-2deg); }
+  50% { transform: translateY(-6px) rotate(-2deg); }
+}
+.float-badge {
+  animation: float-badge 4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .float-badge { animation: none; }
+}
+
+/* Lightbox backdrop blur enhancement */
+.lightbox-backdrop {
+  backdrop-filter: blur(8px) saturate(0.6);
+  -webkit-backdrop-filter: blur(8px) saturate(0.6);
+}
+
+/* Smooth image perspective on gallery hover */
+.gallery-item {
+  transform-origin: center center;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gallery-item:hover {
+  transform: scale(1.02) translateZ(0);
+}
+
+.video-gallery-section {
+  overflow: hidden;
+  padding: 5rem 0 6rem;
+  color: var(--color-primary);
+  background:
+    radial-gradient(circle at 92% 12%, rgba(201, 168, 76, 0.13), transparent 22rem),
+    linear-gradient(135deg, #faf8f3 0%, #f4efe3 100%);
+}
+
+.video-gallery-heading {
+  max-width: 42rem;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.video-gallery-heading h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+}
+
+.video-gallery-heading > p:last-child {
+  max-width: 34rem;
+  margin: 1rem auto 0;
+  color: rgba(26, 71, 64, 0.72);
+  line-height: 1.75;
+}
+
+.video-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.video-gallery-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.video-gallery-rail-wrap {
+  position: relative;
+}
+
+.video-gallery-arrow {
+  position: absolute;
+  top: 42%;
+  z-index: 4;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  color: white;
+  background: rgba(13, 51, 48, 0.92);
+  box-shadow: 0 8px 25px rgba(13, 51, 48, 0.28);
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.video-gallery-arrow:hover {
+  transform: scale(1.08);
+  background: var(--color-gold);
+  color: var(--color-primary-dark);
+}
+
+.video-gallery-arrow-left {
+  left: 0.25rem;
+}
+
+.video-gallery-arrow-right {
+  right: 0.25rem;
+}
+
+.video-gallery-frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #0d3330;
+  box-shadow: 0 18px 45px rgba(13, 51, 48, 0.14);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+}
+
+.video-gallery-card:hover .video-gallery-frame,
+.video-gallery-card:focus-within .video-gallery-frame {
+  transform: translateY(-8px);
+  box-shadow: 0 26px 55px rgba(13, 51, 48, 0.24);
+}
+
+.video-gallery-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  background: #0d3330;
+}
+
+.video-play-overlay {
+  position: absolute;
+  inset: 0 0 48px;
+  z-index: 1;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, rgba(13, 51, 48, 0.08), rgba(13, 51, 48, 0.38));
+  transition: opacity 0.35s ease;
+}
+
+.video-play-button {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  padding-left: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  color: var(--color-primary-dark);
+  background: rgba(201, 168, 76, 0.94);
+  box-shadow: 0 10px 28px rgba(13, 51, 48, 0.32);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.video-gallery-card:hover .video-play-button {
+  transform: scale(1.08);
+}
+
+.video-shimmer {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 48px;
+  left: -80%;
+  width: 45%;
+  pointer-events: none;
+  transform: skewX(-18deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  transition: left 0.8s ease;
+}
+
+.video-gallery-card:hover .video-shimmer {
+  left: 135%;
+}
+
+.video-gallery-caption {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  padding-top: 1rem;
+}
+
+.video-gallery-caption span {
+  color: var(--color-gold-dark);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.video-gallery-caption h3 {
+  margin: 0;
+  color: var(--color-primary);
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+}
+
+.video-gallery-dots {
+  display: none;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 2rem;
+}
+
+.video-gallery-dots span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(26, 71, 64, 0.28);
+}
+
+.video-gallery-dots span.active {
+  background: var(--color-gold-dark);
+}
+
+@media (max-width: 900px) {
+  .video-gallery-grid {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: min(42vw, 18rem);
+    gap: 1rem;
+  }
+  .video-gallery-dots { display: flex; }
+}
+
+@media (max-width: 640px) {
+  .video-gallery-section {
+    padding: 4rem 0 5rem;
+  }
+
+  .video-gallery-heading {
+    margin-bottom: 2rem;
+  }
+
+  .video-gallery-grid {
+    grid-auto-columns: 78vw;
+    gap: 2rem;
+  }
+  .video-gallery-arrow { width: 42px; height: 42px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-gallery-frame,
+  .video-play-button,
+  .video-shimmer {
+    transition: none;
+  }
+
+  .video-gallery-card:hover .video-gallery-frame,
+  .video-gallery-card:focus-within .video-gallery-frame,
+  .video-gallery-card:hover .video-play-button {
+    transform: none;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   ATTRACTIVE LUXURY ANIMATIONS
+───────────────────────────────────────────── */
+
+/* 1. Golden Shimmer Sweep for CTAs */
+@keyframes gold-shimmer-sweep {
+  0% { transform: translateX(-120%) skewX(-20deg); }
+  35%, 100% { transform: translateX(220%) skewX(-20deg); }
+}
+
+.btn-gold-shimmer {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-gold-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
+  );
+  animation: gold-shimmer-sweep 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* 2. Soft Breathing Pulse Ring for Floating CTAs */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 14px rgba(201, 168, 76, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(201, 168, 76, 0);
+  }
+}
+
+.pulse-ring-gold {
+  animation: pulse-ring 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-ring-green {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.pulse-ring-green {
+  animation: pulse-ring-green 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* 3. Floating subtle drift */
+@keyframes float-subtle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
+}
+
+.animate-float-subtle {
+  animation: float-subtle 5s ease-in-out infinite;
+}
+
+/* 4. Luxury Golden Glow for Badges & Highlights */
+@keyframes gold-aura {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(201, 168, 76, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 18px rgba(201, 168, 76, 0.65));
+  }
+}
+
+.gold-aura-glow {
+  animation: gold-aura 3.5s ease-in-out infinite;
+}
+
+/* 5. Coastal Wave Sea Breeze Line */
+@keyframes sea-undulate {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.sea-wave-animate {
+  animation: sea-undulate 16s linear infinite;
+}
+
