@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import ScrollProgressBar from './components/ScrollProgressBar'
+import SmoothScroll from './components/SmoothScroll'
 import BackToTop from './components/BackToTop'
 import FloatingActions from './components/FloatingActions'
 import BookingModal from './components/BookingModal'
@@ -19,6 +20,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <BookingProvider>
+        <SmoothScroll />
         <ScrollToTop />
         <ScrollProgressBar />
         <Navbar />

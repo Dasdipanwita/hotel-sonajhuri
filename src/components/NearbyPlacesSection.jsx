@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MapPin, Compass, ArrowUpRight, Sparkles, Navigation } from 'lucide-react'
+import { MapPin, Compass, ArrowUpRight, Sparkles, Navigation, X, ExternalLink, Phone, MessageCircle } from 'lucide-react'
 import { useScrollReveal, fadeUp, staggerContainer } from '../hooks/useScrollReveal'
 import { usePrefersReducedMotion } from '../hooks/use3DEffects'
 
@@ -132,6 +132,7 @@ const destinations = [
 
 export default function NearbyPlacesSection() {
   const [selectedIndex, setSelectedIndex] = useState(0)
+  const [isPlanModalOpen, setIsPlanModalOpen] = useState(false)
   const reducedMotion = usePrefersReducedMotion()
   const { ref: sectionRef, isInView } = useScrollReveal(0.1)
 
@@ -144,6 +145,21 @@ export default function NearbyPlacesSection() {
       img.src = dest.img
     })
   }, [])
+
+  // Lock scroll and handle escape key when modal is open
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setIsPlanModalOpen(false)
+    }
+    if (isPlanModalOpen) {
+      window.addEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = 'hidden'
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = ''
+    }
+  }, [isPlanModalOpen])
 
   const handleSelect = useCallback((index) => {
     setSelectedIndex(index)
@@ -258,12 +274,14 @@ export default function NearbyPlacesSection() {
               <div className="text-[11px] text-[#ffd875] uppercase tracking-wider font-medium">Hotel Travel Desk</div>
               <div className="text-white/80 text-xs font-light">Assistance &amp; Sightseeing</div>
             </div>
-            <a
-              href="tel:09332656724"
-              className="inline-flex items-center gap-2 bg-[#c9a84c] hover:bg-[#d4b870] text-[#0d3330] font-semibold text-xs sm:text-sm px-4.5 py-2.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#c9a84c]/40 whitespace-nowrap active:scale-95 shadow-md"
+            <button
+              type="button"
+              onClick={() => setIsPlanModalOpen(true)}
+              className="inline-flex items-center gap-2 bg-[#c9a84c] hover:bg-[#d4b870] text-[#0d3330] font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#c9a84c]/40 whitespace-nowrap active:scale-95 shadow-md cursor-pointer hover:-translate-y-0.5"
+              aria-label={`Plan Visit to ${selectedDestination.name}`}
             >
               <Navigation size={14} /> Plan Visit
-            </a>
+            </button>
           </div>
         </motion.div>
 
@@ -301,6 +319,137 @@ export default function NearbyPlacesSection() {
           <Sparkles size={13} className="text-[#ffd875]" />
         </motion.div>
       </div>
+
+      {/* ── Plan Visit Interactive Modal ── */}
+      <AnimatePresence>
+        {isPlanModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsPlanModalOpen(false)}
+              className="fixed inset-0 bg-black/80 backdrop-blur-md"
+            />
+
+            {/* Modal Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.94, y: 15 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 350 }}
+              className="relative w-full max-w-lg rounded-2xl bg-[#092e29] border border-[#c9a84c]/50 shadow-2xl overflow-hidden z-10 text-[#F8F5EB]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header Image Banner */}
+              <div className="relative h-44 sm:h-48 w-full overflow-hidden">
+                <img
+                  src={selectedDestination.img}
+                  alt={selectedDestination.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#092e29] via-[#092e29]/50 to-transparent" />
+
+                {/* Close button */}
+                <button
+                  type="button"
+                  onClick={() => setIsPlanModalOpen(false)}
+                  className="absolute top-3.5 right-3.5 w-9 h-9 rounded-full bg-black/60 hover:bg-black/80 text-white/90 hover:text-white flex items-center justify-center border border-white/20 transition-all duration-200 cursor-pointer"
+                  aria-label="Close dialog"
+                >
+                  <X size={18} />
+                </button>
+
+                {/* Destination metadata overlay */}
+                <div className="absolute bottom-3 left-4 right-4">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider bg-[#c9a84c] text-[#0d3330] px-2.5 py-0.5 rounded-full">
+                      {selectedDestination.category}
+                    </span>
+                    <span className="text-white/90 text-xs flex items-center gap-1 font-medium bg-black/40 backdrop-blur-sm px-2 py-0.5 rounded-full border border-white/10">
+                      <MapPin size={11} className="text-[#ffd875]" />
+                      {selectedDestination.distance}
+                    </span>
+                  </div>
+                  <h3
+                    className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-wide"
+                    style={{ fontFamily: 'Playfair Display, Georgia, serif' }}
+                  >
+                    {selectedDestination.name}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Body Content */}
+              <div className="p-5 sm:p-6 space-y-4">
+                <p className="text-white/80 text-xs sm:text-sm font-light leading-relaxed">
+                  {selectedDestination.desc}
+                </p>
+
+                <div className="h-px bg-white/10 my-2" />
+
+                <div className="space-y-2.5">
+                  {/* Action 1: Google Maps Route */}
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&origin=Hotel+Sonajhuri+New+Digha&destination=${encodeURIComponent(selectedDestination.name + ' Digha West Bengal')}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-[#F5D77F] via-[#D6AD46] to-[#C49B38] text-[#032B25] font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-[#D6AD46]/30 hover:-translate-y-0.5 group cursor-pointer"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-[#032B25]/15 flex items-center justify-center shrink-0">
+                        <Navigation size={16} className="text-[#032B25] group-hover:rotate-12 transition-transform duration-300" />
+                      </div>
+                      <div className="text-left">
+                        <div className="font-bold text-sm">Open in Google Maps</div>
+                        <div className="text-[11px] text-[#032B25]/85 font-normal">Direct driving route from Hotel Sonajhuri</div>
+                      </div>
+                    </div>
+                    <ExternalLink size={16} className="text-[#032B25] shrink-0" />
+                  </a>
+
+                  {/* Action 2: WhatsApp Cab / Sightseeing Assistance */}
+                  <a
+                    href={`https://wa.me/919332656724?text=${encodeURIComponent(`Hi Hotel Sonajhuri, I want to plan a visit to ${selectedDestination.name} (${selectedDestination.distance}). Please assist with cab and sightseeing options.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-3.5 rounded-xl bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/35 text-white font-medium text-sm transition-all duration-300 hover:-translate-y-0.5 group cursor-pointer"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-[#25D366]/25 flex items-center justify-center shrink-0 text-[#25D366]">
+                        <MessageCircle size={16} />
+                      </div>
+                      <div className="text-left">
+                        <div className="font-semibold text-sm text-[#25D366]">Book Cab via WhatsApp</div>
+                        <div className="text-[11px] text-white/70 font-light">Instant front desk concierge assistance</div>
+                      </div>
+                    </div>
+                    <ArrowUpRight size={16} className="text-[#25D366] shrink-0" />
+                  </a>
+
+                  {/* Action 3: Call Travel Desk */}
+                  <a
+                    href="tel:09332656724"
+                    className="flex items-center justify-between p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-white/90 hover:text-white font-medium text-sm transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 text-[#ffd875]">
+                        <Phone size={15} />
+                      </div>
+                      <div className="text-left">
+                        <div className="font-semibold text-sm">Call Travel Desk: 093326-56724</div>
+                        <div className="text-[11px] text-white/60 font-light">Tours, autos &amp; private AC car rental</div>
+                      </div>
+                    </div>
+                    <Phone size={15} className="text-[#ffd875] shrink-0" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
