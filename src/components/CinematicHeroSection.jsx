@@ -15,16 +15,6 @@ gsap.registerPlugin(ScrollTrigger)
 // 3 Authentic Slides matching the luxury Midnight Navy & Champagne Gold direction
 const slides = [
   {
-    id: 'new-digha',
-    img: rooftopDiningHeroImg,
-    label: 'HOTEL SONAJHURI',
-    titlePrefix: 'Hotel in ',
-    highlight: 'New Digha',
-    titleSuffix: '',
-    subtitle: 'A tranquil coastal escape by the sea — where comfort meets timeless elegance.',
-    objectPosition: 'center 40%',
-  },
-  {
     id: 'rooftop-pool-lawn',
     img: heroPoolImg,
     label: 'HOTEL SONAJHURI',
@@ -52,6 +42,16 @@ const slides = [
       'linear-gradient(180deg, rgba(7, 24, 43, 0.20) 0%, rgba(7, 24, 43, 0.25) 45%, rgba(7, 24, 43, 0.55) 100%)',
     vignetteGradient:
       'radial-gradient(ellipse at center, rgba(7, 24, 43, 0.0) 0%, rgba(7, 24, 43, 0.38) 100%)',
+  },
+  {
+    id: 'new-digha',
+    img: rooftopDiningHeroImg,
+    label: 'HOTEL SONAJHURI',
+    titlePrefix: 'Hotel in ',
+    highlight: 'New Digha',
+    titleSuffix: '',
+    subtitle: 'A tranquil coastal escape by the sea — where comfort meets timeless elegance.',
+    objectPosition: 'center 40%',
   },
 ]
 
