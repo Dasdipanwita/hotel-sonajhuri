@@ -50,7 +50,7 @@ const rooms = [
 
 function PageHero() {
   return (
-    <section className="relative h-72 md:h-96 flex items-center justify-center overflow-hidden bg-[#0d3330]">
+    <section className="relative h-72 md:h-96 flex items-center justify-center overflow-hidden bg-[#07182B]">
       <motion.img
         src={roomFamilyDoubleBedImg}
         alt="Rooms at Hotel Sonajhuri"
@@ -59,7 +59,7 @@ function PageHero() {
         animate={{ scale: 1.05 }}
         transition={{ duration: 8, ease: 'linear', repeat: Infinity, repeatType: 'reverse' }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0d3330]/30 via-[#0d3330]/55 to-[#0d3330]/75" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#07182B]/30 via-[#07182B]/55 to-[#07182B]/75" />
       <div className="relative z-10 text-center px-4">
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="section-label mb-3">
           Hotel Sonajhuri
@@ -117,7 +117,7 @@ function RoomCard({ room, index }) {
           rotateY: tilt.rotateY,
           scale: tilt.scale,
         }}
-        className="tilt-card relative bg-[#0d3330] rounded-2xl overflow-hidden border border-white/5 hover:border-[#c9a84c]/30 transition-colors duration-500 depth-shadow group"
+        className="tilt-card relative bg-[#07182B] rounded-2xl overflow-hidden border border-white/5 hover:border-[#c9a84c]/30 transition-colors duration-500 depth-shadow group"
       >
         {/* Gold shimmer layer */}
         <div ref={shineRef} className="tilt-card-shine rounded-2xl" />
@@ -130,7 +130,7 @@ function RoomCard({ room, index }) {
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0d3330]/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#07182B]/80 via-transparent to-transparent" />
         </div>
 
         {/* Content */}
@@ -156,7 +156,7 @@ function RoomCard({ room, index }) {
           {/* Includes */}
           <div className="flex flex-wrap gap-2 mb-6">
             {room.includes.map((item) => (
-              <span key={item} className="text-xs bg-[#1a4740] text-white/60 px-3 py-1 rounded-full border border-white/10">
+              <span key={item} className="text-xs bg-[#10243A] text-white/60 px-3 py-1 rounded-full border border-white/10">
                 {item}
               </span>
             ))}
@@ -165,7 +165,7 @@ function RoomCard({ room, index }) {
           <motion.button
             type="button"
             onClick={() => openBooking({ roomType: room.name })}
-            className="btn-gold-shimmer flex items-center gap-2 bg-[#c9a84c] hover:bg-[#d4b870] text-[#0d3330] font-semibold px-5 py-2.5 rounded w-full justify-center transition-colors duration-300 group/btn cursor-pointer shadow-md hover:shadow-lg hover:shadow-[#c9a84c]/25"
+            className="btn-gold-shimmer flex items-center gap-2 bg-[#c9a84c] hover:bg-[#d4b870] text-[#07182B] font-semibold px-5 py-2.5 rounded w-full justify-center transition-colors duration-300 group/btn cursor-pointer shadow-md hover:shadow-lg hover:shadow-[#c9a84c]/25"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: 'spring', stiffness: 400 }}
@@ -185,7 +185,7 @@ export default function Rooms() {
     <main>
       <PageHero />
 
-      <section className="bg-[#1a4740] py-20 lg:py-28">
+      <section className="bg-[#10243A] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             ref={titleRef}
@@ -220,7 +220,7 @@ export default function Rooms() {
             initial="hidden"
             animate="visible"
             transition={{ delay: 0.4 }}
-            className="mt-16 text-center bg-[#0d3330] rounded-2xl p-10 border border-[#c9a84c]/20 depth-shadow"
+            className="mt-16 text-center bg-[#07182B] rounded-2xl p-10 border border-[#c9a84c]/20 depth-shadow"
           >
             <p className="section-label mb-3">Book Direct &amp; Save</p>
             <div className="gold-line mx-auto" />
@@ -230,7 +230,7 @@ export default function Rooms() {
             <p className="text-white/60 mb-6 text-sm">Contact us directly to enquire about availability, pricing, and special packages.</p>
             <motion.a
               href="tel:09332656724"
-              className="inline-flex items-center gap-2 bg-[#c9a84c] hover:bg-[#d4b870] text-[#0d3330] font-semibold px-8 py-4 rounded transition-colors duration-300 hover:shadow-lg hover:shadow-[#c9a84c]/30"
+              className="inline-flex items-center gap-2 bg-[#c9a84c] hover:bg-[#d4b870] text-[#07182B] font-semibold px-8 py-4 rounded transition-colors duration-300 hover:shadow-lg hover:shadow-[#c9a84c]/30"
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.97 }}
               transition={{ type: 'spring', stiffness: 400 }}

@@ -4,7 +4,7 @@ import { useScrollReveal, fadeUp, slideLeft, slideRight } from '../hooks/useScro
 
 function PageHero() {
   return (
-    <section className="relative h-72 md:h-96 flex items-center justify-center overflow-hidden bg-[#0d3330]">
+    <section className="relative h-72 md:h-96 flex items-center justify-center overflow-hidden bg-[#07182B]">
       <img
         src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&q=70&auto=format&fit=crop"
         alt="Contact Hotel Sonajhuri"
@@ -44,7 +44,7 @@ export default function Contact() {
     <main>
       <PageHero />
 
-      <section className="bg-[#1a4740] py-20 lg:py-28">
+      <section className="bg-[#10243A] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14">
             {/* Contact Info */}
@@ -92,7 +92,7 @@ export default function Contact() {
               initial="hidden"
               animate={rightIn ? 'visible' : 'hidden'}
             >
-              <div className="bg-[#0d3330] rounded-2xl p-8 border border-white/5">
+              <div className="bg-[#07182B] rounded-2xl p-8 border border-white/5">
                 <h3 className="text-white font-semibold text-xl mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
                   Quick Enquiry
                 </h3>
@@ -103,7 +103,7 @@ export default function Contact() {
                       <input
                         type="text"
                         placeholder="Full Name"
-                        className="w-full bg-[#1a4740] border border-white/10 focus:border-[#c9a84c] rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm outline-none transition-colors duration-200"
+                        className="w-full bg-[#10243A] border border-white/10 focus:border-[#c9a84c] rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm outline-none transition-colors duration-200"
                       />
                     </div>
                     <div>
@@ -111,7 +111,7 @@ export default function Contact() {
                       <input
                         type="tel"
                         placeholder="Your Phone Number"
-                        className="w-full bg-[#1a4740] border border-white/10 focus:border-[#c9a84c] rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm outline-none transition-colors duration-200"
+                        className="w-full bg-[#10243A] border border-white/10 focus:border-[#c9a84c] rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm outline-none transition-colors duration-200"
                       />
                     </div>
                   </div>
@@ -120,7 +120,7 @@ export default function Contact() {
                     <input
                       type="email"
                       placeholder="your@email.com"
-                      className="w-full bg-[#1a4740] border border-white/10 focus:border-[#c9a84c] rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm outline-none transition-colors duration-200"
+                      className="w-full bg-[#10243A] border border-white/10 focus:border-[#c9a84c] rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm outline-none transition-colors duration-200"
                     />
                   </div>
                   <div className="grid sm:grid-cols-2 gap-5">
@@ -128,14 +128,14 @@ export default function Contact() {
                       <label className="block text-white/50 text-xs uppercase tracking-wider mb-2">Check In</label>
                       <input
                         type="date"
-                        className="w-full bg-[#1a4740] border border-white/10 focus:border-[#c9a84c] rounded-lg px-4 py-3 text-white/70 text-sm outline-none transition-colors duration-200"
+                        className="w-full bg-[#10243A] border border-white/10 focus:border-[#c9a84c] rounded-lg px-4 py-3 text-white/70 text-sm outline-none transition-colors duration-200"
                       />
                     </div>
                     <div>
                       <label className="block text-white/50 text-xs uppercase tracking-wider mb-2">Check Out</label>
                       <input
                         type="date"
-                        className="w-full bg-[#1a4740] border border-white/10 focus:border-[#c9a84c] rounded-lg px-4 py-3 text-white/70 text-sm outline-none transition-colors duration-200"
+                        className="w-full bg-[#10243A] border border-white/10 focus:border-[#c9a84c] rounded-lg px-4 py-3 text-white/70 text-sm outline-none transition-colors duration-200"
                       />
                     </div>
                   </div>
@@ -144,12 +144,12 @@ export default function Contact() {
                     <textarea
                       rows={4}
                       placeholder="Tell us about your requirements..."
-                      className="w-full bg-[#1a4740] border border-white/10 focus:border-[#c9a84c] rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm outline-none transition-colors duration-200 resize-none"
+                      className="w-full bg-[#10243A] border border-white/10 focus:border-[#c9a84c] rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm outline-none transition-colors duration-200 resize-none"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-[#c9a84c] hover:bg-[#d4b870] text-[#0d3330] font-semibold py-3.5 rounded-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#c9a84c]/30"
+                    className="w-full bg-[#c9a84c] hover:bg-[#d4b870] text-[#07182B] font-semibold py-3.5 rounded-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#c9a84c]/30"
                   >
                     Send Enquiry
                   </button>
@@ -180,7 +180,7 @@ export default function Contact() {
               href="https://www.google.com/maps/place/Hotel+Sonajhuri+-+New+Digha/@21.623772,87.500575,2023m/data=!3m1!1e3!4m9!3m8!1s0x3a1ccd9d53a3686b:0x33ccb78e3f360935!5m2!4m1!1i2!8m2!3d21.6237715!4d87.5005749!16s%2Fg%2F11ss2w0bhk"
               target="_blank"
               rel="noopener noreferrer"
-              className="absolute bottom-3 right-3 bg-[#0d3330]/90 hover:bg-[#c9a84c] text-white hover:text-[#0d3330] border border-[#c9a84c]/50 text-xs px-3 py-1.5 rounded-lg backdrop-blur-sm transition-all duration-300 shadow-md font-medium"
+              className="absolute bottom-3 right-3 bg-[#07182B]/90 hover:bg-[#c9a84c] text-white hover:text-[#07182B] border border-[#c9a84c]/50 text-xs px-3 py-1.5 rounded-lg backdrop-blur-sm transition-all duration-300 shadow-md font-medium"
             >
               Open in Google Maps ↗
             </a>

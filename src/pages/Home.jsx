@@ -145,7 +145,7 @@ function StatsSection() {
   return (
     <section className="bg-[#c9a84c] py-16 relative overflow-hidden">
       {/* Decorative luxury wave watermark */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#0d3330_1px,transparent_1px)] [background-size:16px_16px]" />
+      <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#07182B_1px,transparent_1px)] [background-size:16px_16px]" />
 
       <motion.div
         ref={ref}
@@ -163,12 +163,12 @@ function StatsSection() {
             className="p-4 rounded-xl cursor-default transition-all duration-300 hover:bg-[#d4b870]/40"
           >
             <div
-              className="text-[#0d3330] font-bold mb-1 tracking-tight"
+              className="text-[#07182B] font-bold mb-1 tracking-tight"
               style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(2.4rem, 5.5vw, 3.8rem)' }}
             >
               <AnimatedCounter value={s.value} suffix={s.suffix} isInView={isInView} />
             </div>
-            <div className="text-[#0d3330]/80 text-sm font-semibold tracking-wider uppercase">{s.label}</div>
+            <div className="text-[#07182B]/80 text-sm font-semibold tracking-wider uppercase">{s.label}</div>
           </motion.div>
         ))}
       </motion.div>
@@ -229,10 +229,10 @@ function TestimonialsSection() {
   const item = testimonials[active]
 
   return (
-    <section className="bg-[#0d3330] py-20 lg:py-28 relative overflow-hidden border-t border-[#c9a84c]/20">
+    <section className="bg-[#07182B] py-20 lg:py-28 relative overflow-hidden border-t border-[#c9a84c]/20">
       {/* Decorative ambient glowing circles */}
       <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#c9a84c]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#1a4740]/40 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#10243A]/40 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -256,7 +256,7 @@ function TestimonialsSection() {
         </motion.div>
 
         {/* Testimonial Card */}
-        <div className="relative bg-[#1a4740]/90 backdrop-blur-md rounded-2xl p-8 sm:p-12 border border-[#c9a84c]/25 shadow-2xl depth-shadow">
+        <div className="relative bg-[#10243A]/90 backdrop-blur-md rounded-2xl p-8 sm:p-12 border border-[#c9a84c]/25 shadow-2xl depth-shadow">
           {/* Large decorative quotation mark */}
           <div className="absolute top-6 left-8 text-[#c9a84c]/15 pointer-events-none">
             <Quote size={80} />
@@ -304,7 +304,7 @@ function TestimonialsSection() {
                       {item.location} • <span className="text-white/80">{item.stay}</span>
                     </p>
                   </div>
-                  <span className="inline-block text-xs text-[#c9a84c] bg-[#0d3330] border border-[#c9a84c]/30 px-3 py-1 rounded-full font-medium self-start sm:self-auto">
+                  <span className="inline-block text-xs text-[#c9a84c] bg-[#07182B] border border-[#c9a84c]/30 px-3 py-1 rounded-full font-medium self-start sm:self-auto">
                     {item.highlight}
                   </span>
                 </div>
@@ -334,7 +334,7 @@ function TestimonialsSection() {
                   onClick={prev}
                   whileHover={{ scale: 1.1, x: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-full border border-white/20 hover:border-[#c9a84c] hover:bg-[#c9a84c] text-white hover:text-[#0d3330] flex items-center justify-center transition-all duration-200 cursor-pointer"
+                  className="w-10 h-10 rounded-full border border-white/20 hover:border-[#c9a84c] hover:bg-[#c9a84c] text-white hover:text-[#07182B] flex items-center justify-center transition-all duration-200 cursor-pointer"
                   aria-label="Previous review"
                 >
                   <ChevronLeft size={18} />
@@ -343,7 +343,7 @@ function TestimonialsSection() {
                   onClick={next}
                   whileHover={{ scale: 1.1, x: 2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-full border border-white/20 hover:border-[#c9a84c] hover:bg-[#c9a84c] text-white hover:text-[#0d3330] flex items-center justify-center transition-all duration-200 cursor-pointer"
+                  className="w-10 h-10 rounded-full border border-white/20 hover:border-[#c9a84c] hover:bg-[#c9a84c] text-white hover:text-[#07182B] flex items-center justify-center transition-all duration-200 cursor-pointer"
                   aria-label="Next review"
                 >
                   <ChevronRight size={18} />
@@ -371,7 +371,7 @@ function LocationSection() {
   const { ref: textRef, isInView: textIn } = useScrollReveal()
 
   return (
-    <section className="bg-[#1a4740] py-20 lg:py-28">
+    <section className="bg-[#10243A] py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -437,7 +437,7 @@ function LocationSection() {
               href="https://www.google.com/maps/place/Hotel+Sonajhuri+-+New+Digha/@21.623772,87.500575,2023m/data=!3m1!1e3!4m9!3m8!1s0x3a1ccd9d53a3686b:0x33ccb78e3f360935!5m2!4m1!1i2!8m2!3d21.6237715!4d87.5005749!16s%2Fg%2F11ss2w0bhk"
               target="_blank"
               rel="noopener noreferrer"
-              className="absolute bottom-3 right-3 bg-[#0d3330]/90 hover:bg-[#c9a84c] text-white hover:text-[#0d3330] border border-[#c9a84c]/50 text-xs px-3 py-1.5 rounded-lg backdrop-blur-sm transition-all duration-300 shadow-md font-medium"
+              className="absolute bottom-3 right-3 bg-[#07182B]/90 hover:bg-[#c9a84c] text-white hover:text-[#07182B] border border-[#c9a84c]/50 text-xs px-3 py-1.5 rounded-lg backdrop-blur-sm transition-all duration-300 shadow-md font-medium"
             >
               Open in Google Maps ↗
             </a>

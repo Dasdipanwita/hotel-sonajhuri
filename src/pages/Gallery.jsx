@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ZoomIn, ChevronLeft, ChevronRight, Play } from 'lucide-react'
 import { useScrollReveal, fadeUp, staggerContainer } from '../hooks/useScrollReveal'
@@ -28,7 +29,7 @@ import roomInteriorImg from '../assets/offers-01.jpg'
 import restaurantImg from '../assets/offers-02.jpg'
 import terraceLawnImg from '../assets/offers-04.avif'
 
-const categories = ['All', 'Rooms', 'Pool', 'Restaurant & Cafe', 'Reception & Corridor']
+const categories = ['All', 'Rooms', 'Pool', 'Restaurant & Cafe', 'Garden', 'Reception & Corridor']
 
 const galleryImages = [
   { src: poolWideImg, alt: 'Hotel Sonajhuri Rooftop Swimming Pool & Wooden Deck', cat: 'Pool' },
@@ -45,11 +46,11 @@ const galleryImages = [
   { src: breakfastInBedImg, alt: 'Hotel Sonajhuri Breakfast in Bed Holiday Platter', cat: 'Restaurant & Cafe' },
   { src: ilishUtsavSpecialImg, alt: 'Authentic Ilish Utsav Delicacies on Banana Leaf', cat: 'Restaurant & Cafe' },
   { src: ilishMenuCardImg, alt: 'Hotel Sonajhuri Traditional Hilsa & Ilish Special Menu', cat: 'Restaurant & Cafe' },
-  { src: terraceGardenNightImg, alt: 'Illuminated Rooftop Bamboo Garden with Fairy Lights & Seating', cat: 'Restaurant & Cafe' },
-  { src: terraceGardenDayImg, alt: 'Lush Green Rooftop Garden Cafe & Pergola Daytime View', cat: 'Restaurant & Cafe' },
-  { src: terraceOpenCafeImg, alt: 'Open-Air Terrace Garden & Rooftop Cafe Seating', cat: 'Restaurant & Cafe' },
+  { src: terraceGardenNightImg, alt: 'Illuminated Rooftop Bamboo Garden with Fairy Lights & Seating', cat: 'Garden' },
+  { src: terraceGardenDayImg, alt: 'Lush Green Rooftop Garden Cafe & Pergola Daytime View', cat: 'Garden' },
+  { src: terraceOpenCafeImg, alt: 'Open-Air Terrace Garden & Rooftop Cafe Seating', cat: 'Garden' },
   { src: restaurantImg, alt: 'In-House Multi-Cuisine Restaurant', cat: 'Restaurant & Cafe' },
-  { src: terraceLawnImg, alt: 'Terrace Lawn & Relaxation Area', cat: 'Restaurant & Cafe' },
+  { src: terraceLawnImg, alt: 'Terrace Lawn & Relaxation Area', cat: 'Garden' },
 ]
 
 const galleryVideos = [
@@ -62,7 +63,7 @@ const galleryVideos = [
 
 function PageHero() {
   return (
-    <section className="relative h-72 md:h-96 flex items-center justify-center overflow-hidden bg-[#0d3330]">
+    <section className="relative h-72 md:h-96 flex items-center justify-center overflow-hidden bg-[#07182B]">
       <motion.img
         src={poolWideImg}
         alt="Hotel Sonajhuri Rooftop Pool"
@@ -71,7 +72,7 @@ function PageHero() {
         animate={{ scale: 1.05 }}
         transition={{ duration: 8, ease: 'linear', repeat: Infinity, repeatType: 'reverse' }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0d3330]/30 via-[#0d3330]/55 to-[#0d3330]/75" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#07182B]/30 via-[#07182B]/55 to-[#07182B]/75" />
       <div className="relative z-10 text-center px-4">
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="section-label mb-3">
           Our Hotel
@@ -119,7 +120,7 @@ function Lightbox({ images, startIndex, onClose }) {
   return (
     <motion.div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 lightbox-backdrop"
-      style={{ backgroundColor: 'rgba(13, 51, 48, 0.95)' }}
+      style={{ backgroundColor: 'rgba(7, 24, 43, 0.95)' }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -139,7 +140,7 @@ function Lightbox({ images, startIndex, onClose }) {
         {/* Close */}
         <button
           onClick={onClose}
-          className="absolute -top-5 -right-5 z-10 w-10 h-10 bg-[#c9a84c] hover:bg-[#d4b870] text-[#0d3330] rounded-full flex items-center justify-center transition-colors duration-200 shadow-lg"
+          className="absolute -top-5 -right-5 z-10 w-10 h-10 bg-[#c9a84c] hover:bg-[#d4b870] text-[#07182B] rounded-full flex items-center justify-center transition-colors duration-200 shadow-lg"
           aria-label="Close lightbox"
         >
           <X size={18} />
@@ -185,7 +186,7 @@ function Lightbox({ images, startIndex, onClose }) {
         <div className="absolute top-1/2 -translate-y-1/2 inset-x-0 flex justify-between px-2 pointer-events-none">
           <motion.button
             onClick={() => go(-1)}
-            className="pointer-events-auto w-11 h-11 bg-[#1a4740]/80 hover:bg-[#c9a84c] text-white hover:text-[#0d3330] border border-white/20 hover:border-[#c9a84c] rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm shadow-lg"
+            className="pointer-events-auto w-11 h-11 bg-[#10243A]/80 hover:bg-[#c9a84c] text-white hover:text-[#07182B] border border-white/20 hover:border-[#c9a84c] rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm shadow-lg"
             whileHover={{ scale: 1.1, x: -2 }}
             whileTap={{ scale: 0.9 }}
             aria-label="Previous image"
@@ -194,7 +195,7 @@ function Lightbox({ images, startIndex, onClose }) {
           </motion.button>
           <motion.button
             onClick={() => go(1)}
-            className="pointer-events-auto w-11 h-11 bg-[#1a4740]/80 hover:bg-[#c9a84c] text-white hover:text-[#0d3330] border border-white/20 hover:border-[#c9a84c] rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm shadow-lg"
+            className="pointer-events-auto w-11 h-11 bg-[#10243A]/80 hover:bg-[#c9a84c] text-white hover:text-[#07182B] border border-white/20 hover:border-[#c9a84c] rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm shadow-lg"
             whileHover={{ scale: 1.1, x: 2 }}
             whileTap={{ scale: 0.9 }}
             aria-label="Next image"
@@ -232,18 +233,18 @@ function GalleryItem({ img, index, onClick }) {
         loading="lazy"
       />
       {/* Overlay */}
-      <div className="absolute inset-0 bg-[#0d3330]/0 group-hover:bg-[#0d3330]/45 transition-all duration-400 flex items-center justify-center">
+      <div className="absolute inset-0 bg-[#07182B]/0 group-hover:bg-[#07182B]/45 transition-all duration-400 flex items-center justify-center">
         <motion.div
           initial={{ scale: 0.7, opacity: 0 }}
           whileHover={{ scale: 1, opacity: 1 }}
           className="w-12 h-12 rounded-full bg-[#c9a84c]/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         >
-          <ZoomIn size={20} className="text-[#0d3330]" />
+          <ZoomIn size={20} className="text-[#07182B]" />
         </motion.div>
       </div>
       {/* Category tag */}
       <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <span className="text-[10px] font-medium tracking-widest uppercase bg-[#c9a84c] text-[#0d3330] px-2 py-0.5 rounded">
+        <span className="text-[10px] font-medium tracking-widest uppercase bg-[#c9a84c] text-[#07182B] px-2 py-0.5 rounded">
           {img.cat}
         </span>
       </div>
@@ -296,7 +297,11 @@ function VideoGalleryItem({ video, index }) {
 }
 
 export default function Gallery() {
-  const [activeCategory, setActiveCategory] = useState('All')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const requestedCategory = searchParams.get('category')
+  const [activeCategory, setActiveCategory] = useState(
+    categories.includes(requestedCategory) ? requestedCategory : 'All'
+  )
   const [lightboxIndex, setLightboxIndex] = useState(null)
   const videoRailRef = useRef(null)
   const { ref: titleRef, isInView: titleIn } = useScrollReveal()
@@ -318,7 +323,7 @@ export default function Gallery() {
     <main>
       <PageHero />
 
-      <section className="bg-[#1a4740] py-20 lg:py-28">
+      <section className="bg-[#10243A] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Title */}
           <motion.div
@@ -351,10 +356,13 @@ export default function Gallery() {
                 <motion.button
                   key={cat}
                   variants={fadeUp}
-                  onClick={() => setActiveCategory(cat)}
+                  onClick={() => {
+                    setActiveCategory(cat)
+                    setSearchParams(cat === 'All' ? {} : { category: cat }, { replace: true })
+                  }}
                   className={`relative px-5 py-2 text-sm font-medium rounded-full border transition-colors duration-300 cursor-pointer ${
                     isActive
-                      ? 'border-[#c9a84c] text-[#0d3330]'
+                      ? 'border-[#c9a84c] text-[#07182B]'
                       : 'border-white/20 text-white/60 hover:border-[#c9a84c] hover:text-white'
                   }`}
                   whileHover={{ scale: 1.05, y: -1 }}

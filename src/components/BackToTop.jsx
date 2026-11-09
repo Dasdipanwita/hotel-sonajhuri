@@ -25,7 +25,7 @@ export default function BackToTop() {
               window.scrollTo({ top: 0, behavior: 'smooth' })
             }
           }}
-          className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-[#c9a84c] hover:bg-[#d4b870] text-[#0d3330] rounded-full shadow-lg shadow-black/30 flex items-center justify-center transition-colors duration-200"
+          className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-[#c9a84c] hover:bg-[#d4b870] text-[#07182B] rounded-full shadow-lg shadow-black/30 flex items-center justify-center transition-colors duration-200"
           aria-label="Back to top"
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.9 }}

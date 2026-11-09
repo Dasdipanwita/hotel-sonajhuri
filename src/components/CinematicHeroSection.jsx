@@ -6,40 +6,52 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useBooking } from '../context/BookingContext'
 
 // Authentic Hotel Sonajhuri Photography
-import heroPoolImg from '../assets/sonajhuri-pool-hero.jpg'
-import roomHeroImg from '../assets/gallery/room-family-double-bed.jpg'
-import lawnHeroImg from '../assets/gallery/terrace-garden-night.png'
+import rooftopGardenHeroImg from '../assets/gallery/rooftop-garden-terrace.jpg'
+import heroPoolImg from '../assets/sonajhuri-pool-hero.webp'
+import roomHeroImg from '../assets/gallery/room-deluxe-twin.webp'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// 3 Authentic Slides
+// 3 Authentic Slides matching the luxury Midnight Navy & Champagne Gold direction
 const slides = [
   {
-    id: 'pool',
-    img: heroPoolImg,
+    id: 'new-digha',
+    img: rooftopGardenHeroImg,
     label: 'HOTEL SONAJHURI',
     titlePrefix: 'Hotel in ',
     highlight: 'New Digha',
     titleSuffix: '',
-    subtitle: 'A tranquil escape by the sea — where comfort meets coastal elegance.',
+    subtitle: 'A tranquil coastal escape by the sea — where comfort meets timeless elegance.',
+    objectPosition: 'center 40%',
   },
   {
-    id: 'rooms',
-    img: roomHeroImg,
-    label: 'HOTEL SONAJHURI',
-    titlePrefix: 'Rooms & ',
-    highlight: 'Suites',
-    titleSuffix: '',
-    subtitle: 'Spacious, stylish, and perfect for a coastal getaway.',
-  },
-  {
-    id: 'lawn',
-    img: lawnHeroImg,
+    id: 'rooftop-pool-lawn',
+    img: heroPoolImg,
     label: 'HOTEL SONAJHURI',
     titlePrefix: 'Rooftop Pool & ',
     highlight: 'Lawn',
     titleSuffix: '',
     subtitle: 'Unwind at our rooftop pool with stunning sea-breeze views.',
+    objectPosition: 'center 85%',
+    overlayGradient:
+      'linear-gradient(180deg, rgba(7, 24, 43, 0.20) 0%, rgba(7, 24, 43, 0.32) 42%, rgba(7, 24, 43, 0.65) 100%)',
+    vignetteGradient:
+      'radial-gradient(ellipse at center, rgba(7, 24, 43, 0.04) 0%, rgba(7, 24, 43, 0.45) 100%)',
+    contentOffset: 'translate-y-4 sm:translate-y-6 md:translate-y-10',
+  },
+  {
+    id: 'rooms-suites',
+    img: roomHeroImg,
+    label: 'HOTEL SONAJHURI',
+    titlePrefix: 'Rooms & ',
+    highlight: 'Suites',
+    titleSuffix: '',
+    subtitle: 'Spacious, stylish, and curated for an unforgettable seaside retreat.',
+    objectPosition: 'center 42%',
+    overlayGradient:
+      'linear-gradient(180deg, rgba(7, 24, 43, 0.20) 0%, rgba(7, 24, 43, 0.25) 45%, rgba(7, 24, 43, 0.55) 100%)',
+    vignetteGradient:
+      'radial-gradient(ellipse at center, rgba(7, 24, 43, 0.0) 0%, rgba(7, 24, 43, 0.38) 100%)',
   },
 ]
 
@@ -53,6 +65,7 @@ export default function CinematicHeroSection() {
   const contentContainerRef = useRef(null)
   const labelRef = useRef(null)
   const headingRef = useRef(null)
+  const dividerRef = useRef(null)
   const subtitleRef = useRef(null)
   const ctaPrimaryRef = useRef(null)
   const ctaSecondaryRef = useRef(null)
@@ -90,7 +103,7 @@ export default function CinematicHeroSection() {
 
     const ctx = gsap.context(() => {
       gsap.to(bgWrapperRef.current, {
-        yPercent: 18,
+        yPercent: 16,
         ease: 'none',
         scrollTrigger: {
           trigger: heroContainerRef.current,
@@ -115,6 +128,7 @@ export default function CinematicHeroSection() {
         [
           labelRef.current,
           headingRef.current,
+          dividerRef.current,
           subtitleRef.current,
           ctaPrimaryRef.current,
           ctaSecondaryRef.current,
@@ -130,7 +144,7 @@ export default function CinematicHeroSection() {
     tl.fromTo(
       labelRef.current,
       { opacity: 0, y: -12, letterSpacing: '0.35em' },
-      { opacity: 1, y: 0, letterSpacing: '0.24em', duration: 0.7, ease: 'power3.out' }
+      { opacity: 1, y: 0, letterSpacing: '0.25em', duration: 0.7, ease: 'power3.out' }
     )
 
     // Heading words reveal
@@ -151,12 +165,20 @@ export default function CinematicHeroSection() {
       )
     }
 
+    // Gold diamond divider expansion
+    tl.fromTo(
+      dividerRef.current,
+      { opacity: 0, scaleX: 0 },
+      { opacity: 1, scaleX: 1, duration: 0.65, ease: 'power2.out' },
+      '-=0.4'
+    )
+
     // Subtitle reveal
     tl.fromTo(
       subtitleRef.current,
       { opacity: 0, y: 18 },
       { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
-      '-=0.45'
+      '-=0.4'
     )
 
     // CTA buttons sequential entrance
@@ -164,15 +186,15 @@ export default function CinematicHeroSection() {
       [ctaPrimaryRef.current, ctaSecondaryRef.current],
       { opacity: 0, y: 20, scale: 0.96 },
       { opacity: 1, y: 0, scale: 1, duration: 0.65, stagger: 0.12, ease: 'power3.out' },
-      '-=0.4'
+      '-=0.35'
     )
   }, [current])
 
-  // Scroll indicator vertical pulse
+  // Scroll indicator vertical movement
   useEffect(() => {
     if (!scrollIndicatorRef.current) return
     const tween = gsap.to(scrollIndicatorRef.current, {
-      y: 8,
+      y: 7,
       duration: 1.6,
       repeat: -1,
       yoyo: true,
@@ -188,10 +210,10 @@ export default function CinematicHeroSection() {
       ref={heroContainerRef}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
-      className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#032B25] text-[#F8F5EB]"
-      aria-label="Hotel Sonajhuri Hero Showcase"
+      className="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-between overflow-hidden bg-[#07182B] text-[#F8F4EA]"
+      aria-label="Hotel Sonajhuri Luxury Hero Showcase"
     >
-      {/* ── BACKGROUND CAROUSEL WITH SMOOTH CROSSFADE & PARALLAX ── */}
+      {/* ── BACKGROUND CAROUSEL WITH LAYERED NAVY OVERLAY & PARALLAX ── */}
       <div
         ref={bgWrapperRef}
         className="absolute inset-0 w-full h-[120%] -top-[10%] pointer-events-none select-none"
@@ -208,25 +230,28 @@ export default function CinematicHeroSection() {
               <img
                 src={s.img}
                 alt={s.highlight}
-                className="w-full h-full object-cover object-center scale-[1.03] transition-transform duration-[6000ms] ease-out"
+                className="w-full h-full object-cover scale-[1.02] brightness-[1.03] contrast-[1.06] transition-transform duration-[6000ms] ease-out"
+                style={{ objectPosition: s.objectPosition || 'center center' }}
                 loading={index === 0 ? 'eager' : 'lazy'}
               />
 
-              {/* Sophisticated Dark Emerald & Forest Green Gradient Overlay */}
+              {/* Exact Layered Navy Overlay: subtle so room interior details, natural lighting & woodwork stay rich */}
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    'linear-gradient(180deg, rgba(3, 43, 37, 0.42) 0%, rgba(6, 59, 50, 0.38) 45%, rgba(3, 43, 37, 0.82) 100%)',
+                    s.overlayGradient ||
+                    'linear-gradient(180deg, rgba(7, 24, 43, 0.28) 0%, rgba(7, 24, 43, 0.36) 45%, rgba(7, 24, 43, 0.70) 100%)',
                 }}
               />
 
-              {/* Edge Vignette for Text Focus & High Readability */}
+              {/* Subtle Edge Vignette for Text Focus & Natural Color Preservation */}
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    'radial-gradient(ellipse at center, rgba(3, 43, 37, 0.15) 0%, rgba(3, 43, 37, 0.65) 100%)',
+                    s.vignetteGradient ||
+                    'radial-gradient(ellipse at center, rgba(7, 24, 43, 0.05) 0%, rgba(7, 24, 43, 0.50) 100%)',
                 }}
               />
             </div>
@@ -240,33 +265,35 @@ export default function CinematicHeroSection() {
       {/* ── MAIN CENTERED EDITORIAL HERO CONTENT ── */}
       <div
         ref={contentContainerRef}
-        className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center my-auto py-12"
+        className={`relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center my-auto py-8 sm:py-12 transition-transform duration-700 ease-out ${
+          slide.contentOffset || ''
+        }`}
       >
-        {/* Small uppercase label */}
+        {/* Small uppercase label: — HOTEL SONAJHURI — */}
         <div
           ref={labelRef}
-          className="inline-flex items-center justify-center gap-3 mb-4"
+          className="inline-flex items-center justify-center gap-3 mb-4 sm:mb-5"
         >
-          <span className="w-8 h-px bg-gradient-to-r from-transparent to-[#D6AD46]" />
-          <span className="text-xs uppercase tracking-[0.24em] font-medium text-[#D6AD46] drop-shadow-sm">
+          <span className="w-7 sm:w-10 h-px bg-gradient-to-r from-transparent to-[#D6B875]" />
+          <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#D6B875] drop-shadow-sm">
             {slide.label}
           </span>
-          <span className="w-8 h-px bg-gradient-to-l from-transparent to-[#D6AD46]" />
+          <span className="w-7 sm:w-10 h-px bg-gradient-to-l from-transparent to-[#D6B875]" />
         </div>
 
-        {/* Main Heading: Playfair Display Serif */}
+        {/* Main Heading: Playfair Display Luxury Serif */}
         <h1
           ref={headingRef}
-          className="text-[#F8F5EB] font-serif font-bold tracking-tight mb-5 leading-[1.1] drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)]"
+          className="text-[#F8F4EA] font-serif font-bold tracking-tight mb-5 leading-[1.12] drop-shadow-[0_4px_24px_rgba(7,24,43,0.9)]"
           style={{
             fontFamily: 'Playfair Display, Georgia, serif',
-            fontSize: 'clamp(2.4rem, 6.2vw, 5.2rem)',
+            fontSize: 'clamp(2.5rem, 6.2vw, 5.2rem)',
           }}
         >
           <span className="hero-word inline-block mr-2 sm:mr-3">
             {slide.titlePrefix}
           </span>
-          <span className="hero-word inline-block text-[#D6AD46] drop-shadow-[0_2px_16px_rgba(214,173,70,0.4)]">
+          <span className="hero-word inline-block text-[#D6B875] drop-shadow-[0_2px_18px_rgba(214,184,117,0.45)]">
             {slide.highlight}
           </span>
           {slide.titleSuffix && (
@@ -276,35 +303,39 @@ export default function CinematicHeroSection() {
           )}
         </h1>
 
-        {/* Static Antique Gold Divider with Center Diamond */}
-        <div className="relative w-28 sm:w-36 h-px bg-gradient-to-r from-transparent via-[#D6AD46] to-transparent mx-auto mb-6">
-          <span className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 bg-[#D6AD46]" />
+        {/* Decorative Gold Divider with Diamond-Shaped Center */}
+        <div
+          ref={dividerRef}
+          className="relative w-32 sm:w-40 h-px bg-gradient-to-r from-transparent via-[#D6B875] to-transparent mx-auto mb-6"
+        >
+          <span className="absolute -top-[3.5px] left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 bg-[#D6B875] shadow-[0_0_8px_rgba(214,184,117,0.55)]" />
         </div>
 
-        {/* Subtitle */}
+        {/* Subtitle in Elegant Italic Serif */}
         <p
           ref={subtitleRef}
-          className="text-[#F8F5EB]/90 font-light text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-9 sm:mb-11 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]"
+          className="text-[#F8F4EA]/90 font-serif italic text-lg sm:text-xl md:text-2xl font-light max-w-2xl mx-auto leading-relaxed mb-9 sm:mb-11 drop-shadow-[0_2px_14px_rgba(7,24,43,0.95)]"
+          style={{ fontFamily: 'Playfair Display, Georgia, serif' }}
         >
           {slide.subtitle}
         </p>
 
-        {/* Premium CTA Buttons */}
+        {/* ── 5. PREMIUM CTA BUTTONS (CHAMPAGNE GOLD & NAVY) ── */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-          {/* Primary Button: Book Online → */}
+          {/* Primary Button: BOOK ONLINE → */}
           <button
             ref={ctaPrimaryRef}
             type="button"
             onClick={() => openBooking()}
-            className="group relative inline-flex items-center justify-center gap-3 px-8 sm:px-9 py-3.5 sm:py-4 rounded-full font-semibold text-sm sm:text-base tracking-wider uppercase text-[#032B25] shadow-xl shadow-black/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-[#D6AD46]/35 active:translate-y-0 cursor-pointer"
+            className="group relative inline-flex items-center justify-center gap-3 px-8 sm:px-9 py-3.5 sm:py-4 rounded-full font-semibold text-xs sm:text-sm tracking-wider uppercase text-[#07182B] shadow-xl shadow-[#07182B]/70 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-[#D6B875]/35 active:translate-y-0 cursor-pointer"
             style={{
-              background: 'linear-gradient(135deg, #F5D77F 0%, #D6AD46 50%, #C49B38 100%)',
+              background: 'linear-gradient(135deg, #F2D28B 0%, #D6B875 50%, #B8964E 100%)',
             }}
             aria-label="Book Online at Hotel Sonajhuri"
           >
-            <span>Book Online</span>
+            <span>BOOK ONLINE</span>
             <ArrowRight
-              size={18}
+              size={17}
               className="transition-transform duration-300 group-hover:translate-x-1.5"
             />
           </button>
@@ -313,7 +344,7 @@ export default function CinematicHeroSection() {
           <Link
             ref={ctaSecondaryRef}
             to="/rooms"
-            className="group inline-flex items-center justify-center gap-2 px-8 sm:px-9 py-3.5 sm:py-4 rounded-full font-medium text-sm sm:text-base tracking-wide text-[#F8F5EB] border border-white/50 hover:border-[#D6AD46] hover:text-[#D6AD46] bg-black/20 hover:bg-[#032B25]/60 backdrop-blur-sm transition-all duration-300 shadow-md"
+            className="group inline-flex items-center justify-center gap-2 px-8 sm:px-9 py-3.5 sm:py-4 rounded-full font-medium text-xs sm:text-sm tracking-wider text-[#F8F4EA] border border-[#D6B875]/60 hover:border-[#D6B875] hover:text-[#F2D28B] bg-[#07182B]/45 hover:bg-[#D6B875]/15 backdrop-blur-sm transition-all duration-300 shadow-md"
             aria-label="View our luxury hotel rooms"
           >
             <span>Our Rooms</span>
@@ -325,7 +356,7 @@ export default function CinematicHeroSection() {
       <button
         type="button"
         onClick={prevSlide}
-        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-11 sm:w-12 h-11 sm:h-12 rounded-full border border-white/25 bg-[#032B25]/50 hover:bg-[#D6AD46] hover:text-[#032B25] hover:border-[#D6AD46] text-[#F8F5EB] backdrop-blur-md flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer hover:scale-105 active:scale-95"
+        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-11 sm:w-12 h-11 sm:h-12 rounded-full border border-[#D6B875]/40 hover:border-[#D6B875] bg-[#07182B]/50 hover:bg-[#D6B875] hover:text-[#07182B] text-[#F8F4EA] backdrop-blur-md flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer hover:scale-105 active:scale-95"
         aria-label="Previous slide"
       >
         <ChevronLeft size={20} />
@@ -334,14 +365,14 @@ export default function CinematicHeroSection() {
       <button
         type="button"
         onClick={nextSlide}
-        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-11 sm:w-12 h-11 sm:h-12 rounded-full border border-white/25 bg-[#032B25]/50 hover:bg-[#D6AD46] hover:text-[#032B25] hover:border-[#D6AD46] text-[#F8F5EB] backdrop-blur-md flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer hover:scale-105 active:scale-95"
+        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-11 sm:w-12 h-11 sm:h-12 rounded-full border border-[#D6B875]/40 hover:border-[#D6B875] bg-[#07182B]/50 hover:bg-[#D6B875] hover:text-[#07182B] text-[#F8F4EA] backdrop-blur-md flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer hover:scale-105 active:scale-95"
         aria-label="Next slide"
       >
         <ChevronRight size={20} />
       </button>
 
-      {/* ── 8. BOTTOM DECORATIVE DESIGN & CURVED SECTION DIVIDER ── */}
-      <div className="relative z-20 w-full pt-6 pb-2">
+      {/* ── 8. BOTTOM DECORATIVE DESIGN & CURVED WAVE SECTION DIVIDER ── */}
+      <div className="relative z-20 w-full pt-6 pb-0">
         {/* Minimal Golden Pagination Indicators */}
         <div className="flex items-center justify-center gap-2.5 mb-5">
           {slides.map((_, i) => (
@@ -351,28 +382,28 @@ export default function CinematicHeroSection() {
               onClick={() => goToSlide(i)}
               className={`transition-all duration-500 rounded-full cursor-pointer ${
                 i === current
-                  ? 'w-9 h-1.5 bg-[#D6AD46] shadow-[0_0_8px_rgba(214,173,70,0.6)]'
-                  : 'w-2.5 h-1.5 bg-white/35 hover:bg-white/70'
+                  ? 'w-9 h-2 bg-[#D6B875] shadow-[0_0_10px_rgba(214,184,117,0.55)]'
+                  : 'w-2.5 h-2.5 bg-white/35 hover:bg-white/70'
               }`}
               aria-label={`Go to slide ${i + 1}`}
             />
           ))}
         </div>
 
-        {/* Minimal Centered Scroll Indicator */}
-        <div className="flex flex-col items-center justify-center pb-4">
-          <span className="text-[10px] tracking-[0.25em] uppercase text-[#F8F5EB]/65 mb-1.5 font-light">
-            Scroll to explore
+        {/* Centered Scroll Indicator */}
+        <div className="flex flex-col items-center justify-center pb-5">
+          <span className="text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-[#F8F4EA]/70 mb-1.5 font-light">
+            SCROLL TO EXPLORE
           </span>
           <div
             ref={scrollIndicatorRef}
-            className="w-5 h-8 rounded-full border border-[#D6AD46]/50 flex items-start justify-center p-1"
+            className="w-5 h-8 rounded-full border border-[#D6B875]/60 flex items-start justify-center p-1"
           >
-            <div className="w-1 h-2 rounded-full bg-[#D6AD46]" />
+            <div className="w-1 h-2 rounded-full bg-[#D6B875]" />
           </div>
         </div>
 
-        {/* Sophisticated Curved Dark Emerald Section Divider */}
+        {/* Sophisticated Curved Wave Divider with Thin Champagne Gold Border */}
         <div className="relative w-full overflow-hidden leading-none">
           <svg
             className="relative block w-full h-8 sm:h-12 lg:h-16"
@@ -380,18 +411,18 @@ export default function CinematicHeroSection() {
             preserveAspectRatio="none"
             aria-hidden="true"
           >
-            {/* Soft background curve matching #063B32 (About Sonajhuri section) */}
+            {/* Smooth organic wave filled with deep midnight navy #07182B */}
             <path
               d="M0,0 C300,90 900,90 1200,0 L1200,120 L0,120 Z"
-              fill="#063B32"
+              fill="#07182B"
             />
-            {/* Thin static antique gold curved hairline line */}
+            {/* Thin static champagne-gold curved border */}
             <path
               d="M0,0 C300,90 900,90 1200,0"
               fill="none"
-              stroke="#D6AD46"
+              stroke="#D6B875"
               strokeWidth="1.5"
-              strokeOpacity="0.45"
+              strokeOpacity="0.55"
             />
           </svg>
         </div>

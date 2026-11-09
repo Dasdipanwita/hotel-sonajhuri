@@ -169,7 +169,7 @@ export default function NearbyPlacesSection() {
     <section
       ref={sectionRef}
       id="nearby-places"
-      className="relative min-h-[95vh] py-24 lg:py-32 flex flex-col justify-center overflow-hidden bg-[#0d3330]"
+      className="relative min-h-[95vh] py-24 lg:py-32 flex flex-col justify-center overflow-hidden bg-[#07182B]"
       aria-label="Nearby Places to Visit"
     >
       {/* ── Dynamic Vivid Background Canvas with Crossfade & Ken Burns ── */}
@@ -200,10 +200,10 @@ export default function NearbyPlacesSection() {
         </AnimatePresence>
 
         {/* ── Soft & Light Translucent Overlay (Keeps Background Vividly Visible) ── */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0d3330]/45 via-[#0d3330]/25 to-[#0d3330]/55" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#07182B]/45 via-[#07182B]/25 to-[#07182B]/55" />
         <div className="absolute inset-0 bg-black/15" />
-        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#0d3330]/60 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#0d3330]/70 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#07182B]/60 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#07182B]/70 to-transparent" />
       </div>
 
       {/* ── Foreground Content ── */}
@@ -245,7 +245,7 @@ export default function NearbyPlacesSection() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="max-w-4xl mx-auto mb-8 p-5 sm:p-6 rounded-2xl bg-[#0d3330]/60 backdrop-blur-md border border-white/20 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-5"
+          className="max-w-4xl mx-auto mb-8 p-5 sm:p-6 rounded-2xl bg-[#07182B]/60 backdrop-blur-md border border-white/20 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-5"
           style={{ textShadow: '0 1px 8px rgba(0,0,0,0.6)' }}
         >
           <div className="flex-1">
@@ -277,7 +277,7 @@ export default function NearbyPlacesSection() {
             <button
               type="button"
               onClick={() => setIsPlanModalOpen(true)}
-              className="inline-flex items-center gap-2 bg-[#c9a84c] hover:bg-[#d4b870] text-[#0d3330] font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#c9a84c]/40 whitespace-nowrap active:scale-95 shadow-md cursor-pointer hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 bg-[#c9a84c] hover:bg-[#d4b870] text-[#07182B] font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#c9a84c]/40 whitespace-nowrap active:scale-95 shadow-md cursor-pointer hover:-translate-y-0.5"
               aria-label={`Plan Visit to ${selectedDestination.name}`}
             >
               <Navigation size={14} /> Plan Visit
@@ -339,7 +339,7 @@ export default function NearbyPlacesSection() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.94, y: 15 }}
               transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-              className="relative w-full max-w-lg rounded-2xl bg-[#092e29] border border-[#c9a84c]/50 shadow-2xl overflow-hidden z-10 text-[#F8F5EB]"
+              className="relative w-full max-w-lg rounded-2xl bg-[#040E1B] border border-[#c9a84c]/50 shadow-2xl overflow-hidden z-10 text-[#F8F5EB]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header Image Banner */}
@@ -349,7 +349,7 @@ export default function NearbyPlacesSection() {
                   alt={selectedDestination.name}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#092e29] via-[#092e29]/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#040E1B] via-[#040E1B]/50 to-transparent" />
 
                 {/* Close button */}
                 <button
@@ -364,7 +364,7 @@ export default function NearbyPlacesSection() {
                 {/* Destination metadata overlay */}
                 <div className="absolute bottom-3 left-4 right-4">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[10px] font-semibold uppercase tracking-wider bg-[#c9a84c] text-[#0d3330] px-2.5 py-0.5 rounded-full">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider bg-[#c9a84c] text-[#07182B] px-2.5 py-0.5 rounded-full">
                       {selectedDestination.category}
                     </span>
                     <span className="text-white/90 text-xs flex items-center gap-1 font-medium bg-black/40 backdrop-blur-sm px-2 py-0.5 rounded-full border border-white/10">
@@ -395,18 +395,18 @@ export default function NearbyPlacesSection() {
                     href={`https://www.google.com/maps/dir/?api=1&origin=Hotel+Sonajhuri+New+Digha&destination=${encodeURIComponent(selectedDestination.name + ' Digha West Bengal')}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-[#F5D77F] via-[#D6AD46] to-[#C49B38] text-[#032B25] font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-[#D6AD46]/30 hover:-translate-y-0.5 group cursor-pointer"
+                    className="flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-[#F5D77F] via-[#D6AD46] to-[#C49B38] text-[#040E1B] font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-[#D6AD46]/30 hover:-translate-y-0.5 group cursor-pointer"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-[#032B25]/15 flex items-center justify-center shrink-0">
-                        <Navigation size={16} className="text-[#032B25] group-hover:rotate-12 transition-transform duration-300" />
+                      <div className="w-8 h-8 rounded-full bg-[#040E1B]/15 flex items-center justify-center shrink-0">
+                        <Navigation size={16} className="text-[#040E1B] group-hover:rotate-12 transition-transform duration-300" />
                       </div>
                       <div className="text-left">
                         <div className="font-bold text-sm">Open in Google Maps</div>
-                        <div className="text-[11px] text-[#032B25]/85 font-normal">Direct driving route from Hotel Sonajhuri</div>
+                        <div className="text-[11px] text-[#040E1B]/85 font-normal">Direct driving route from Hotel Sonajhuri</div>
                       </div>
                     </div>
-                    <ExternalLink size={16} className="text-[#032B25] shrink-0" />
+                    <ExternalLink size={16} className="text-[#040E1B] shrink-0" />
                   </a>
 
                   {/* Action 2: WhatsApp Cab / Sightseeing Assistance */}
@@ -499,8 +499,8 @@ function DestinationCard({ dest, isSelected, onClick }) {
         }}
         className={`relative w-full rounded-xl overflow-hidden p-4 sm:p-4.5 flex items-center justify-between gap-3 border transition-all duration-300 ${
           isSelected
-            ? 'bg-[#0d3330]/75 border-[#ffd875] shadow-2xl shadow-[#c9a84c]/30 ring-1 ring-[#ffd875]'
-            : 'bg-[#0d3330]/40 hover:bg-[#0d3330]/65 border-white/20 hover:border-[#ffd875]/60 shadow-lg hover:shadow-2xl'
+            ? 'bg-[#07182B]/75 border-[#ffd875] shadow-2xl shadow-[#c9a84c]/30 ring-1 ring-[#ffd875]'
+            : 'bg-[#07182B]/40 hover:bg-[#07182B]/65 border-white/20 hover:border-[#ffd875]/60 shadow-lg hover:shadow-2xl'
         } backdrop-blur-md`}
       >
         {/* Active Golden Corner Accent */}
@@ -552,7 +552,7 @@ function DestinationCard({ dest, isSelected, onClick }) {
         <div
           className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
             isSelected
-              ? 'bg-[#c9a84c] text-[#0d3330] rotate-45 shadow-md shadow-[#c9a84c]/50'
+              ? 'bg-[#c9a84c] text-[#07182B] rotate-45 shadow-md shadow-[#c9a84c]/50'
               : 'border border-white/30 text-white/80 group-hover:border-[#ffd875] group-hover:text-[#ffd875]'
           }`}
         >

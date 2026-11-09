@@ -50,7 +50,7 @@ const blogs = [
 
 function PageHero() {
   return (
-    <section className="relative h-72 md:h-96 flex items-center justify-center overflow-hidden bg-[#0d3330]">
+    <section className="relative h-72 md:h-96 flex items-center justify-center overflow-hidden bg-[#07182B]">
       <img
         src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=70&auto=format&fit=crop"
         alt="Blogs"
@@ -85,7 +85,7 @@ function BlogCard({ blog, index }) {
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       transition={{ delay: index * 0.08 }}
-      className="bg-[#0d3330] rounded-2xl overflow-hidden border border-white/5 hover:border-[#c9a84c]/30 transition-all duration-500 hover:shadow-2xl hover:shadow-black/40 group flex flex-col"
+      className="bg-[#07182B] rounded-2xl overflow-hidden border border-white/5 hover:border-[#c9a84c]/30 transition-all duration-500 hover:shadow-2xl hover:shadow-black/40 group flex flex-col"
     >
       <div className="relative h-52 overflow-hidden">
         <img
@@ -94,7 +94,7 @@ function BlogCard({ blog, index }) {
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d3330]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#07182B]/70 to-transparent" />
       </div>
       <div className="p-6 flex flex-col flex-1">
         <div className="flex items-center gap-4 text-white/40 text-xs mb-4">
@@ -126,7 +126,7 @@ export default function Blogs() {
     <main>
       <PageHero />
 
-      <section className="bg-[#1a4740] py-20 lg:py-28">
+      <section className="bg-[#10243A] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             ref={titleRef}

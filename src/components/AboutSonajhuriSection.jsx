@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { 
   ArrowRight, 
@@ -7,17 +7,24 @@ import {
   BedDouble, 
   UtensilsCrossed, 
   Waves, 
-  Compass, 
-  Clock, 
-  Sparkles 
+  Palmtree, 
+  Headset, 
+  Sparkles,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useBooking } from '../context/BookingContext'
 
 // Authentic Hotel Sonajhuri Photography
-import heroPoolImg from '../assets/sonajhuri-pool-hero.jpg'
+import heroPoolImg from '../assets/sonajhuri-pool-hero.webp'
 import roomImg from '../assets/gallery/room-family-double-bed.jpg'
+import deluxeRoomImg from '../assets/gallery/room-deluxe-twin.webp'
+import diningImg from '../assets/offers-02.jpg'
+import poolImg from '../assets/sonajhuri-pool-hero.webp'
+import gardenImg from '../assets/gallery/rooftop-garden-terrace.jpg'
+import receptionImg from '../assets/gallery/sonajhuri-reception.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -46,29 +53,39 @@ function CoastalPalmSVG({ className = '', style = {} }) {
 
 const amenitiesData = [
   {
+    id: 'premium-rooms',
     icon: BedDouble,
     title: 'Premium Rooms',
     desc: 'Bespoke Comfort',
+    img: deluxeRoomImg,
   },
   {
+    id: 'delicious-dining',
     icon: UtensilsCrossed,
     title: 'Delicious Dining',
     desc: 'Coastal Flavors',
+    img: diningImg,
   },
   {
+    id: 'rooftop-pool',
     icon: Waves,
     title: 'Rooftop Pool',
     desc: 'Panoramic Azure',
+    img: poolImg,
   },
   {
-    icon: Compass,
+    id: 'serene-view',
+    icon: Palmtree,
     title: 'Serene View',
     desc: 'Seaside Serenity',
+    img: gardenImg,
   },
   {
-    icon: Clock,
+    id: '24-7-support',
+    icon: Headset,
     title: '24/7 Support',
     desc: 'Attentive Care',
+    img: receptionImg,
   },
 ]
 
@@ -99,6 +116,11 @@ export default function AboutSonajhuriSection() {
   const botanicalBottomRef = useRef(null)
 
   const { openBooking } = useBooking()
+
+  // Active amenity state for the showcase matching 2nd reference screenshot
+  const [activeAmenityIdx, setActiveAmenityIdx] = useState(0)
+  const handleNextAmenity = () => setActiveAmenityIdx((prev) => (prev + 1) % amenitiesData.length)
+  const handlePrevAmenity = () => setActiveAmenityIdx((prev) => (prev - 1 + amenitiesData.length) % amenitiesData.length)
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -408,14 +430,14 @@ export default function AboutSonajhuriSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-gradient-to-b from-[#063B32] via-[#032B25] to-[#063B32] py-24 sm:py-28 lg:py-32 overflow-hidden text-[#F8F5EB]"
+      className="relative bg-gradient-to-b from-[#07182B] via-[#040E1B] to-[#07182B] py-24 sm:py-28 lg:py-32 overflow-hidden text-[#F8F5EB]"
       style={{ willChange: 'transform' }}
     >
       {/* ── AMBIENT BACKGROUND GLOW & BOTANICALS ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Soft Radial Gold Aura */}
         <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D6AD46]/7 rounded-full blur-[140px]" />
-        <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-[#063B32]/60 rounded-full blur-[120px]" />
+        <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-[#07182B]/60 rounded-full blur-[120px]" />
 
         {/* Ambient Botanical Palm vector line illustrations */}
         <div
@@ -538,7 +560,7 @@ export default function AboutSonajhuriSection() {
               <button
                 type="button"
                 onClick={() => openBooking()}
-                className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-xl font-semibold text-sm tracking-wide text-[#032B25] overflow-hidden cursor-pointer shadow-lg shadow-[#D6AD46]/20 transition-all duration-300 hover:shadow-2xl hover:shadow-[#D6AD46]/40 hover:-translate-y-0.5 active:translate-y-0"
+                className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-xl font-semibold text-sm tracking-wide text-[#040E1B] overflow-hidden cursor-pointer shadow-lg shadow-[#D6AD46]/20 transition-all duration-300 hover:shadow-2xl hover:shadow-[#D6AD46]/40 hover:-translate-y-0.5 active:translate-y-0"
                 style={{
                   background: 'linear-gradient(135deg, #F5D77F 0%, #D6AD46 50%, #B38C2B 100%)',
                 }}
@@ -557,7 +579,7 @@ export default function AboutSonajhuriSection() {
                 className="group flex items-center gap-3.5 transition-colors duration-200"
                 aria-label="Call Hotel Sonajhuri for reservation"
               >
-                <div className="w-11 h-11 rounded-full border border-[#D6AD46]/40 bg-[#063B32]/70 flex items-center justify-center text-[#D6AD46] transition-all duration-300 group-hover:border-[#D6AD46] group-hover:bg-[#D6AD46] group-hover:text-[#032B25] group-hover:scale-105 shadow-md shadow-[#032B25]/60">
+                <div className="w-11 h-11 rounded-full border border-[#D6AD46]/40 bg-[#07182B]/70 flex items-center justify-center text-[#D6AD46] transition-all duration-300 group-hover:border-[#D6AD46] group-hover:bg-[#D6AD46] group-hover:text-[#040E1B] group-hover:scale-105 shadow-md shadow-[#040E1B]/60">
                   <Phone size={17} className="transition-transform duration-300 group-hover:rotate-12" />
                 </div>
                 <div className="flex flex-col">
@@ -588,7 +610,7 @@ export default function AboutSonajhuriSection() {
               {/* ── MAIN IMAGE: Rooftop Swimming Pool (~65% width) ── */}
               <div
                 ref={mainImageWrapperRef}
-                className="col-span-9 sm:col-span-8 relative rounded-2xl overflow-hidden border border-[#D6AD46]/40 shadow-2xl shadow-[#032B25]/90 group transition-all duration-300"
+                className="col-span-9 sm:col-span-8 relative rounded-2xl overflow-hidden border border-[#D6AD46]/40 shadow-2xl shadow-[#040E1B]/90 group transition-all duration-300"
                 style={{
                   height: 'clamp(320px, 42vw, 460px)',
                   transformStyle: 'preserve-3d',
@@ -606,12 +628,12 @@ export default function AboutSonajhuriSection() {
                 </div>
 
                 {/* Subtle dark gradient overlay & gold sheen */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#032B25]/75 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#040E1B]/75 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D6AD46]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                 <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[#D6AD46]/30 pointer-events-none" />
 
                 {/* Pool Caption Strip */}
-                <div className="absolute bottom-4 left-4 right-4 z-10 flex items-center justify-between text-xs text-[#F8F5EB]/90 bg-[#032B25]/80 backdrop-blur-md px-3.5 py-2 rounded-lg border border-[#D6AD46]/25">
+                <div className="absolute bottom-4 left-4 right-4 z-10 flex items-center justify-between text-xs text-[#F8F5EB]/90 bg-[#040E1B]/80 backdrop-blur-md px-3.5 py-2 rounded-lg border border-[#D6AD46]/25">
                   <span className="font-serif italic tracking-wide">Rooftop Swimming Pool</span>
                   <span className="text-[#D6AD46] text-[10px] uppercase tracking-wider font-semibold">Panoramic View</span>
                 </div>
@@ -620,7 +642,7 @@ export default function AboutSonajhuriSection() {
               {/* ── SECONDARY IMAGE: Hotel Room Photo (Offset & Overlapping) ── */}
               <div
                 ref={secondImageWrapperRef}
-                className="col-span-6 sm:col-span-5 absolute -right-2 sm:-right-4 bottom-2 sm:-bottom-4 z-20 rounded-2xl overflow-hidden border border-[#D6AD46]/45 shadow-2xl shadow-[#032B25] group"
+                className="col-span-6 sm:col-span-5 absolute -right-2 sm:-right-4 bottom-2 sm:-bottom-4 z-20 rounded-2xl overflow-hidden border border-[#D6AD46]/45 shadow-2xl shadow-[#040E1B] group"
                 style={{
                   height: 'clamp(210px, 28vw, 320px)',
                   transformStyle: 'preserve-3d',
@@ -637,11 +659,11 @@ export default function AboutSonajhuriSection() {
                 </div>
 
                 {/* Gradient vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#032B25]/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#040E1B]/80 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[#D6AD46]/35 pointer-events-none" />
 
                 {/* Room label overlay */}
-                <div className="absolute bottom-3 left-3 right-3 text-xs text-[#F8F5EB] bg-[#032B25]/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-[#D6AD46]/20">
+                <div className="absolute bottom-3 left-3 right-3 text-xs text-[#F8F5EB] bg-[#040E1B]/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-[#D6AD46]/20">
                   <p className="font-serif font-medium text-[12px] truncate">Family Double Bed</p>
                   <p className="text-[#D6AD46] text-[10px] tracking-wider uppercase">False Ceiling & AC</p>
                 </div>
@@ -657,24 +679,24 @@ export default function AboutSonajhuriSection() {
                 }}
               >
                 {/* 5 Stars */}
-                <div className="flex items-center gap-1 mb-1 text-[#032B25]">
+                <div className="flex items-center gap-1 mb-1 text-[#040E1B]">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <Star
                       key={star}
                       size={13}
-                      fill="#032B25"
-                      className="text-[#032B25]"
+                      fill="#040E1B"
+                      className="text-[#040E1B]"
                     />
                   ))}
                 </div>
                 {/* Badge Titles */}
                 <div
-                  className="font-bold text-xs sm:text-sm text-[#032B25] leading-tight"
+                  className="font-bold text-xs sm:text-sm text-[#040E1B] leading-tight"
                   style={{ fontFamily: 'Playfair Display, Georgia, serif' }}
                 >
                   Premium Stay
                 </div>
-                <div className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#032B25]/85 mt-0.5">
+                <div className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#040E1B]/85 mt-0.5">
                   in New Digha
                 </div>
               </div>
@@ -685,49 +707,191 @@ export default function AboutSonajhuriSection() {
         </div>
 
         {/* ─────────────────────────────────────────
-            5. BOTTOM AMENITIES BAR (Full-Width Glass Bar)
+            5. OUR PREMIUM AMENITIES SHOWCASE (Exact Match to Reference Screenshot)
            ───────────────────────────────────────── */}
         <div
           ref={amenitiesBarRef}
-          className="relative rounded-2xl border border-[#D6AD46]/30 bg-[#032B25]/75 backdrop-blur-md p-5 sm:p-7 shadow-2xl shadow-[#032B25]/90 overflow-hidden"
+          className="relative w-full pt-16 sm:pt-20 lg:pt-24 pb-8"
         >
-          {/* Ambient golden hairline glow at top of bar */}
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#D6AD46]/60 to-transparent" />
+          {/* Subtle Corner Botanical Accents */}
+          <div className="absolute -top-10 -left-6 sm:-left-10 w-44 sm:w-56 h-auto opacity-30 pointer-events-none hidden md:block z-0">
+            <CoastalPalmSVG className="w-full h-full transform -rotate-15" />
+          </div>
+          <div className="absolute bottom-16 -right-6 sm:-right-10 w-48 sm:w-64 h-auto opacity-30 pointer-events-none hidden md:block z-0">
+            <CoastalPalmSVG className="w-full h-full transform rotate-165" />
+          </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-0">
-            {amenitiesData.map((item, index) => {
-              const Icon = item.icon
-              const isLast = index === amenitiesData.length - 1
+          {/* ── Section Header ── */}
+          <div className="text-center mb-10 sm:mb-14 relative z-10">
+            {/* Tagline */}
+            <div className="inline-flex items-center justify-center gap-3 text-xs sm:text-sm font-semibold tracking-[0.28em] text-[#D6AD46] uppercase mb-3">
+              <span className="w-8 sm:w-12 h-px bg-gradient-to-r from-transparent to-[#D6AD46]/70" />
+              <span>HOTEL SONAJHURI</span>
+              <span className="w-8 sm:w-12 h-px bg-gradient-to-l from-transparent to-[#D6AD46]/70" />
+            </div>
 
-              return (
-                <div
-                  key={item.title}
-                  ref={(el) => (amenityItemsRef.current[index] = el)}
-                  className={`group flex items-center gap-3.5 sm:gap-4 px-3 sm:px-4 lg:px-6 transition-all duration-300 hover:-translate-y-0.5 ${
-                    !isLast ? 'lg:border-r lg:border-[#D6AD46]/20' : ''
-                  }`}
-                >
-                  {/* Golden line icon container with smooth glow */}
-                  <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-xl border border-[#D6AD46]/35 bg-[#063B32]/60 flex items-center justify-center shrink-0 text-[#D6AD46] transition-all duration-300 group-hover:border-[#D6AD46] group-hover:bg-[#D6AD46]/15 group-hover:scale-110 shadow-sm shadow-[#032B25]">
-                    <Icon size={20} className="transition-transform duration-300 group-hover:rotate-6" />
-                    <span className="absolute inset-0 rounded-xl bg-[#D6AD46]/10 opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-300" />
+            {/* Main Heading */}
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-bold text-white tracking-tight"
+              style={{ fontFamily: 'Playfair Display, Georgia, serif' }}
+            >
+              Our Premium <span className="text-[#D6AD46] italic">Amenities</span>
+            </h2>
+
+            {/* Subtitle */}
+            <p className="text-[#F8F5EB]/85 italic text-sm sm:text-base md:text-lg mt-2.5 font-serif max-w-xl mx-auto">
+              Experience the perfect blend of luxury and comfort.
+            </p>
+
+            {/* Golden Diamond Divider */}
+            <div className="flex items-center justify-center gap-3 mt-4">
+              <span className="w-16 sm:w-24 h-px bg-gradient-to-r from-transparent via-[#D6AD46]/50 to-[#D6AD46]" />
+              <span className="w-2.5 h-2.5 rotate-45 border border-[#D6AD46] bg-[#D6AD46]/40 shadow-[0_0_8px_rgba(214,173,70,0.6)]" />
+              <span className="w-16 sm:w-24 h-px bg-gradient-to-l from-transparent via-[#D6AD46]/50 to-[#D6AD46]" />
+            </div>
+          </div>
+
+          {/* ── Connected 5-Cards Showcase ── */}
+          <div className="relative w-full px-2 sm:px-6 lg:px-8">
+            {/* Horizontal Golden Connecting Guide Line */}
+            <div className="absolute top-[46%] left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#D6AD46]/40 to-transparent pointer-events-none hidden lg:block z-0" />
+
+            {/* Left Navigation Arrow */}
+            <button
+              onClick={handlePrevAmenity}
+              aria-label="Previous amenity"
+              className="absolute -left-2 sm:-left-4 lg:-left-5 top-[46%] -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#D6AD46]/60 bg-[#07182B]/85 backdrop-blur-md text-[#D6AD46] hover:bg-[#D6AD46] hover:text-[#040E1B] flex items-center justify-center transition-all duration-300 shadow-xl shadow-black/60 hover:scale-110 z-20 cursor-pointer"
+            >
+              <ChevronLeft size={22} />
+            </button>
+
+            {/* Right Navigation Arrow */}
+            <button
+              onClick={handleNextAmenity}
+              aria-label="Next amenity"
+              className="absolute -right-2 sm:-right-4 lg:-right-5 top-[46%] -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#D6AD46]/60 bg-[#07182B]/85 backdrop-blur-md text-[#D6AD46] hover:bg-[#D6AD46] hover:text-[#040E1B] flex items-center justify-center transition-all duration-300 shadow-xl shadow-black/60 hover:scale-110 z-20 cursor-pointer"
+            >
+              <ChevronRight size={22} />
+            </button>
+
+            {/* 5 Cards Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-3.5 xl:gap-4 relative z-10">
+              {amenitiesData.map((item, index) => {
+                const Icon = item.icon
+                const isActive = index === activeAmenityIdx
+
+                return (
+                  <div
+                    key={item.id}
+                    ref={(el) => (amenityItemsRef.current[index] = el)}
+                    onClick={() => setActiveAmenityIdx(index)}
+                    className={`group relative rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-500 cursor-pointer ${
+                      isActive
+                        ? 'border-2 border-[#D6AD46] bg-gradient-to-b from-[#102947] via-[#091E36] to-[#061426] shadow-[0_0_28px_rgba(214,173,70,0.45),0_20px_35px_rgba(0,0,0,0.85)] scale-[1.02] -translate-y-2'
+                        : 'border border-[#D6AD46]/25 bg-gradient-to-b from-[#0B1E36]/90 via-[#07182B]/90 to-[#040E1B]/95 hover:border-[#D6AD46]/70 hover:-translate-y-1.5 hover:shadow-lg'
+                    }`}
+                  >
+                    {/* Active Top Golden Halo Line */}
+                    {isActive && (
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#F2D28B] to-transparent z-10 shadow-[0_0_10px_#F2D28B]" />
+                    )}
+
+                    {/* Top Content Area */}
+                    <div className="p-4 sm:p-5 flex flex-col items-center text-center">
+                      {/* Circular Gold Icon Ring */}
+                      <div
+                        className={`relative w-14 h-14 sm:w-15 sm:h-15 rounded-full border flex items-center justify-center text-[#D6AD46] mb-3.5 transition-all duration-300 ${
+                          isActive
+                            ? 'border-2 border-[#D6AD46] bg-[#07182B] shadow-[0_0_16px_rgba(214,173,70,0.4)] scale-105'
+                            : 'border-[#D6AD46]/45 bg-[#07182B]/80 group-hover:border-[#D6AD46] group-hover:scale-105'
+                        }`}
+                      >
+                        <Icon size={24} className="transition-transform duration-300 group-hover:rotate-6" />
+                      </div>
+
+                      {/* Title */}
+                      <h3
+                        className="font-serif font-bold text-base sm:text-[17px] text-white tracking-wide mb-1 leading-snug"
+                        style={{ fontFamily: 'Playfair Display, Georgia, serif' }}
+                      >
+                        {item.title}
+                      </h3>
+
+                      {/* Subtitle */}
+                      <p className="text-xs sm:text-[13px] text-[#D6AD46] font-medium tracking-wide">
+                        {item.desc}
+                      </p>
+
+                      {/* Gold Divider */}
+                      <div className="w-8 h-px bg-[#D6AD46]/50 mt-3 mb-1" />
+                    </div>
+
+                    {/* Bottom Photograph */}
+                    <div className="relative w-full aspect-[16/11] overflow-hidden rounded-b-[14px] mt-auto">
+                      <img
+                        src={item.img}
+                        alt={item.title}
+                        className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      {/* Subtle Vignette Gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#061426]/75 via-transparent to-transparent pointer-events-none" />
+                    </div>
                   </div>
+                )
+              })}
+            </div>
+          </div>
 
-                  {/* Amenity Typography */}
-                  <div className="flex flex-col">
-                    <span className="text-xs sm:text-sm font-serif font-semibold text-[#F8F5EB] tracking-wide transition-colors duration-200 group-hover:text-[#D6AD46]">
-                      {item.title}
-                    </span>
-                    <span className="text-[11px] text-[#F8F5EB]/65 font-light tracking-normal">
-                      {item.desc}
-                    </span>
-                  </div>
-                </div>
-              )
-            })}
+          {/* ── Minimalist Pagination Pills ── */}
+          <div className="flex items-center justify-center gap-2 mt-8 sm:mt-10 mb-4">
+            {amenitiesData.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveAmenityIdx(idx)}
+                aria-label={`Go to amenity ${idx + 1}`}
+                className={`transition-all duration-300 cursor-pointer ${
+                  idx === activeAmenityIdx
+                    ? 'w-8 h-1.5 rounded-full bg-[#D6AD46] shadow-[0_0_10px_#D6AD46]'
+                    : 'w-2 h-1.5 rounded-full bg-[#D6AD46]/35 hover:bg-[#D6AD46]/70'
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* ── Scroll To Explore with Animated Mouse Icon ── */}
+          <div className="flex flex-col items-center justify-center mt-3 text-center">
+            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-[#D6AD46]/90 mb-2">
+              SCROLL TO EXPLORE
+            </span>
+            <div className="w-4 h-6 rounded-full border border-[#D6AD46]/70 flex items-start justify-center p-1">
+              <div className="w-1 h-1.5 rounded-full bg-[#D6AD46] animate-bounce" />
+            </div>
           </div>
         </div>
 
+      </div>
+
+      {/* ── BOTTOM CURVED WAVE DIVIDER (Exact Match to Screenshot 2) ── */}
+      <div className="w-full overflow-hidden leading-none -mb-24 sm:-mb-28 lg:-mb-32 mt-10 pointer-events-none relative z-10">
+        <svg
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+          className="relative block w-full h-10 sm:h-14 md:h-18"
+        >
+          {/* Solid Fill to merge seamlessly into next section */}
+          <path
+            d="M0,15 C300,90 900,90 1200,15 L1200,120 L0,120 Z"
+            fill="#061426"
+          />
+          {/* Golden Stroke on the curve only */}
+          <path
+            d="M0,15 C300,90 900,90 1200,15"
+            fill="none"
+            stroke="#D6AD46"
+            strokeWidth="2"
+          />
+        </svg>
       </div>
     </section>
   )

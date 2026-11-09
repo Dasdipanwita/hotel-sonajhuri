@@ -16,13 +16,13 @@ export default function FloatingActions() {
 
   return (
     <aside aria-label="Quick contact links" className="fixed bottom-6 left-6 z-40 flex flex-col gap-3 pointer-events-auto">
-      {/* WhatsApp Button */}
+      {/* WhatsApp Button (Deep Navy & Champagne Gold Theme) */}
       <motion.a
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
-        className="relative group w-12 h-12 bg-[#25d366] text-white rounded-full flex items-center justify-center shadow-lg shadow-black/30 hover:bg-[#20ba59] transition-colors duration-300 pulse-ring-green"
+        className="relative group w-12 h-12 bg-[#10243A] text-[#D6A93D] border border-[#D6A93D]/50 rounded-full flex items-center justify-center shadow-lg shadow-black/40 hover:bg-[#D6A93D] hover:text-[#10243A] transition-colors duration-300 pulse-ring-gold"
         initial={{ opacity: 0, scale: 0, x: -20 }}
         animate={{ opacity: 1, scale: 1, x: 0 }}
         transition={{ delay: 0.8, type: 'spring', stiffness: 260, damping: 20 }}
@@ -32,7 +32,7 @@ export default function FloatingActions() {
         <WhatsAppIcon size={26} />
 
         {/* Tooltip */}
-        <span className="absolute left-14 whitespace-nowrap bg-[#0d3330] text-white text-xs font-medium px-3 py-1.5 rounded-md shadow-xl border border-[#c9a84c]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none hidden sm:block">
+        <span className="absolute left-14 whitespace-nowrap bg-[#0B1B2B] text-white text-xs font-medium px-3 py-1.5 rounded-md shadow-xl border border-[#D6A93D]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none hidden sm:block">
           Chat on WhatsApp
         </span>
       </motion.a>
@@ -41,7 +41,7 @@ export default function FloatingActions() {
       <motion.a
         href="tel:09332656724"
         aria-label="Call Hotel Reception"
-        className="relative group w-12 h-12 bg-[#0d3330] text-[#c9a84c] border border-[#c9a84c]/50 rounded-full flex items-center justify-center shadow-lg shadow-black/30 hover:bg-[#1a4740] hover:text-[#ffd875] transition-colors duration-300 pulse-ring-gold"
+        className="relative group w-12 h-12 bg-[#0B1B2B] text-[#D6A93D] border border-[#D6A93D]/50 rounded-full flex items-center justify-center shadow-lg shadow-black/40 hover:bg-[#10243A] hover:text-[#F2CE75] transition-colors duration-300 pulse-ring-gold"
         initial={{ opacity: 0, scale: 0, x: -20 }}
         animate={{ opacity: 1, scale: 1, x: 0 }}
         transition={{ delay: 1.0, type: 'spring', stiffness: 260, damping: 20 }}
@@ -51,7 +51,7 @@ export default function FloatingActions() {
         <Phone size={20} />
 
         {/* Tooltip */}
-        <span className="absolute left-14 whitespace-nowrap bg-[#0d3330] text-white text-xs font-medium px-3 py-1.5 rounded-md shadow-xl border border-[#c9a84c]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none hidden sm:block">
+        <span className="absolute left-14 whitespace-nowrap bg-[#0B1B2B] text-white text-xs font-medium px-3 py-1.5 rounded-md shadow-xl border border-[#D6A93D]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none hidden sm:block">
           Call 093326-56724
         </span>
       </motion.a>

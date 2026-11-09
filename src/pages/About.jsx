@@ -10,7 +10,7 @@ import roomImg from '../assets/gallery/room-family-double-bed.jpg'
 
 function PageHero() {
   return (
-    <section className="relative h-72 md:h-96 flex items-center justify-center overflow-hidden bg-[#0d3330]">
+    <section className="relative h-72 md:h-96 flex items-center justify-center overflow-hidden bg-[#07182B]">
       <motion.img
         src={heroPoolImg}
         alt="About Hotel Sonajhuri"
@@ -19,7 +19,7 @@ function PageHero() {
         animate={{ scale: 1.05 }}
         transition={{ duration: 8, ease: 'linear', repeat: Infinity, repeatType: 'reverse' }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0d3330]/30 via-[#0d3330]/55 to-[#0d3330]/75" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#07182B]/30 via-[#07182B]/55 to-[#07182B]/75" />
       <div className="relative z-10 text-center px-4">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -57,7 +57,7 @@ function ValueCard({ icon: Icon, title, desc }) {
   return (
     <motion.div
       variants={fadeUp}
-      className="bg-[#1a4740] rounded-xl p-6 border border-white/5 hover:border-[#c9a84c]/30 transition-colors duration-300 group text-center depth-shadow cursor-default"
+      className="bg-[#10243A] rounded-xl p-6 border border-white/5 hover:border-[#c9a84c]/30 transition-colors duration-300 group text-center depth-shadow cursor-default"
       whileHover={{ y: -6, scale: 1.02 }}
       transition={{ type: 'spring', stiffness: 250, damping: 20 }}
     >
@@ -91,7 +91,7 @@ export default function About() {
       <PageHero />
 
       {/* Main About */}
-      <section className="bg-[#1a4740] py-20 lg:py-28">
+      <section className="bg-[#10243A] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <motion.div
@@ -119,7 +119,7 @@ export default function About() {
               </p>
               <div className="flex flex-wrap gap-4 items-center">
                 <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400 }}>
-                  <Link to="/rooms" className="btn-gold-shimmer flex items-center gap-2 bg-[#c9a84c] hover:bg-[#d4b870] text-[#0d3330] font-semibold px-6 py-3 rounded transition-colors duration-300 hover:shadow-lg hover:shadow-[#c9a84c]/25">
+                  <Link to="/rooms" className="btn-gold-shimmer flex items-center gap-2 bg-[#c9a84c] hover:bg-[#d4b870] text-[#07182B] font-semibold px-6 py-3 rounded transition-colors duration-300 hover:shadow-lg hover:shadow-[#c9a84c]/25">
                     Book Room
                   </Link>
                 </motion.div>
@@ -185,7 +185,7 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="bg-[#0d3330] py-20 lg:py-28">
+      <section className="bg-[#07182B] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             ref={s3Ref}

@@ -24,19 +24,19 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-[#0d3330] text-white">
+    <footer className="bg-[#07182B] text-white">
       {/* Top CTA Band */}
       <div className="bg-[#c9a84c]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <p className="text-[#0d3330] font-semibold text-lg" style={{ fontFamily: 'Playfair Display, serif' }}>
+            <p className="text-[#07182B] font-semibold text-lg" style={{ fontFamily: 'Playfair Display, serif' }}>
               Ready for a coastal escape?
             </p>
-            <p className="text-[#0d3330]/80 text-sm">Book your stay at Hotel Sonajhuri, New Digha</p>
+            <p className="text-[#07182B]/80 text-sm">Book your stay at Hotel Sonajhuri, New Digha</p>
           </div>
           <a
             href="tel:09332656724"
-            className="flex items-center gap-2 bg-[#0d3330] text-[#c9a84c] font-semibold px-6 py-3 rounded hover:bg-[#1a4740] transition-all duration-300 whitespace-nowrap"
+            className="flex items-center gap-2 bg-[#07182B] text-[#c9a84c] font-semibold px-6 py-3 rounded hover:bg-[#10243A] transition-all duration-300 whitespace-nowrap"
           >
             <Phone size={16} /> Call to Book
           </a>

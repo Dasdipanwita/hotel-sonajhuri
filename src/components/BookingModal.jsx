@@ -87,7 +87,7 @@ export default function BookingModal() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={closeBooking}
-          className="fixed inset-0 bg-[#0d3330]/80 backdrop-blur-md"
+          className="fixed inset-0 bg-[#07182B]/80 backdrop-blur-md"
         />
 
         {/* Modal Dialog */}
@@ -96,11 +96,11 @@ export default function BookingModal() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          className="relative w-full max-w-2xl bg-[#0d3330] border border-[#c9a84c]/40 rounded-2xl shadow-2xl overflow-hidden my-auto depth-shadow"
+          className="relative w-full max-w-2xl bg-[#07182B] border border-[#c9a84c]/40 rounded-2xl shadow-2xl overflow-hidden my-auto depth-shadow"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header Banner */}
-          <div className="relative bg-gradient-to-r from-[#1a4740] via-[#0d3330] to-[#1a4740] p-6 border-b border-[#c9a84c]/20">
+          <div className="relative bg-gradient-to-r from-[#10243A] via-[#07182B] to-[#10243A] p-6 border-b border-[#c9a84c]/20">
             <div className="flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-2 mb-1">
@@ -146,8 +146,8 @@ export default function BookingModal() {
                           onClick={() => setFormData((p) => ({ ...p, roomType: room.name }))}
                           className={`p-3.5 rounded-xl border cursor-pointer transition-all duration-200 flex items-center justify-between ${
                             isChosen
-                              ? 'bg-[#1a4740] border-[#ffd875] ring-1 ring-[#ffd875] shadow-md'
-                              : 'bg-[#1a4740]/40 hover:bg-[#1a4740]/80 border-white/10'
+                              ? 'bg-[#10243A] border-[#ffd875] ring-1 ring-[#ffd875] shadow-md'
+                              : 'bg-[#10243A]/40 hover:bg-[#10243A]/80 border-white/10'
                           }`}
                         >
                           <div>
@@ -176,7 +176,7 @@ export default function BookingModal() {
                       required
                       value={formData.checkIn}
                       onChange={handleChange}
-                      className="w-full bg-[#1a4740] border border-white/15 focus:border-[#ffd875] rounded-xl px-4 py-2.5 text-white text-sm outline-none transition-colors duration-200"
+                      className="w-full bg-[#10243A] border border-white/15 focus:border-[#ffd875] rounded-xl px-4 py-2.5 text-white text-sm outline-none transition-colors duration-200"
                     />
                   </div>
                   <div>
@@ -189,7 +189,7 @@ export default function BookingModal() {
                       required
                       value={formData.checkOut}
                       onChange={handleChange}
-                      className="w-full bg-[#1a4740] border border-white/15 focus:border-[#ffd875] rounded-xl px-4 py-2.5 text-white text-sm outline-none transition-colors duration-200"
+                      className="w-full bg-[#10243A] border border-white/15 focus:border-[#ffd875] rounded-xl px-4 py-2.5 text-white text-sm outline-none transition-colors duration-200"
                     />
                   </div>
                 </div>
@@ -204,10 +204,10 @@ export default function BookingModal() {
                       name="adults"
                       value={formData.adults}
                       onChange={handleChange}
-                      className="w-full bg-[#1a4740] border border-white/15 focus:border-[#ffd875] rounded-xl px-4 py-2.5 text-white text-sm outline-none transition-colors duration-200"
+                      className="w-full bg-[#10243A] border border-white/15 focus:border-[#ffd875] rounded-xl px-4 py-2.5 text-white text-sm outline-none transition-colors duration-200"
                     >
                       {[1, 2, 3, 4, 5, 6].map((num) => (
-                        <option key={num} value={num} className="bg-[#0d3330]">
+                        <option key={num} value={num} className="bg-[#07182B]">
                           {num} {num === 1 ? 'Adult' : 'Adults'}
                         </option>
                       ))}
@@ -221,10 +221,10 @@ export default function BookingModal() {
                       name="children"
                       value={formData.children}
                       onChange={handleChange}
-                      className="w-full bg-[#1a4740] border border-white/15 focus:border-[#ffd875] rounded-xl px-4 py-2.5 text-white text-sm outline-none transition-colors duration-200"
+                      className="w-full bg-[#10243A] border border-white/15 focus:border-[#ffd875] rounded-xl px-4 py-2.5 text-white text-sm outline-none transition-colors duration-200"
                     >
                       {[0, 1, 2, 3, 4].map((num) => (
-                        <option key={num} value={num} className="bg-[#0d3330]">
+                        <option key={num} value={num} className="bg-[#07182B]">
                           {num} {num === 1 ? 'Child' : 'Children'}
                         </option>
                       ))}
@@ -247,7 +247,7 @@ export default function BookingModal() {
                         placeholder="Full Name *"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full bg-[#1a4740] border border-white/15 focus:border-[#ffd875] rounded-xl px-4 py-2.5 text-white placeholder-white/40 text-sm outline-none transition-colors duration-200"
+                        className="w-full bg-[#10243A] border border-white/15 focus:border-[#ffd875] rounded-xl px-4 py-2.5 text-white placeholder-white/40 text-sm outline-none transition-colors duration-200"
                       />
                     </div>
                     <div>
@@ -258,7 +258,7 @@ export default function BookingModal() {
                         placeholder="Phone Number * (e.g. 093326-56724)"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full bg-[#1a4740] border border-white/15 focus:border-[#ffd875] rounded-xl px-4 py-2.5 text-white placeholder-white/40 text-sm outline-none transition-colors duration-200"
+                        className="w-full bg-[#10243A] border border-white/15 focus:border-[#ffd875] rounded-xl px-4 py-2.5 text-white placeholder-white/40 text-sm outline-none transition-colors duration-200"
                       />
                     </div>
                   </div>
@@ -270,7 +270,7 @@ export default function BookingModal() {
                       placeholder="Email Address (optional for confirmation)"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full bg-[#1a4740] border border-white/15 focus:border-[#ffd875] rounded-xl px-4 py-2.5 text-white placeholder-white/40 text-sm outline-none transition-colors duration-200"
+                      className="w-full bg-[#10243A] border border-white/15 focus:border-[#ffd875] rounded-xl px-4 py-2.5 text-white placeholder-white/40 text-sm outline-none transition-colors duration-200"
                     />
                   </div>
 
@@ -281,7 +281,7 @@ export default function BookingModal() {
                       placeholder="Special Requests (e.g., Early check-in, Ground floor, Sea breeze view)"
                       value={formData.specialRequests}
                       onChange={handleChange}
-                      className="w-full bg-[#1a4740] border border-white/15 focus:border-[#ffd875] rounded-xl px-4 py-2.5 text-white placeholder-white/40 text-sm outline-none transition-colors duration-200 resize-none"
+                      className="w-full bg-[#10243A] border border-white/15 focus:border-[#ffd875] rounded-xl px-4 py-2.5 text-white placeholder-white/40 text-sm outline-none transition-colors duration-200 resize-none"
                     />
                   </div>
                 </div>
@@ -298,11 +298,11 @@ export default function BookingModal() {
                       disabled={loading}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="btn-gold-shimmer w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#c9a84c] hover:bg-[#d4b870] text-[#0d3330] font-bold text-sm px-8 py-3.5 rounded-xl shadow-lg shadow-[#c9a84c]/25 transition-all duration-300 disabled:opacity-50 cursor-pointer"
+                      className="btn-gold-shimmer w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#c9a84c] hover:bg-[#d4b870] text-[#07182B] font-bold text-sm px-8 py-3.5 rounded-xl shadow-lg shadow-[#c9a84c]/25 transition-all duration-300 disabled:opacity-50 cursor-pointer"
                     >
                     {loading ? (
                       <>
-                        <div className="w-4 h-4 border-2 border-[#0d3330] border-t-transparent rounded-full animate-spin" />
+                        <div className="w-4 h-4 border-2 border-[#07182B] border-t-transparent rounded-full animate-spin" />
                         <span>Confirming Reservation...</span>
                       </>
                     ) : (
@@ -338,7 +338,7 @@ export default function BookingModal() {
                 </div>
 
                 {/* Booking Summary Ticket */}
-                <div className="bg-[#1a4740] rounded-xl p-5 border border-[#ffd875]/30 text-left max-w-md mx-auto space-y-3 depth-shadow">
+                <div className="bg-[#10243A] rounded-xl p-5 border border-[#ffd875]/30 text-left max-w-md mx-auto space-y-3 depth-shadow">
                   <div className="flex justify-between items-center pb-2.5 border-b border-white/10">
                     <span className="text-white/50 text-xs">Booking ID</span>
                     <span className="text-[#ffd875] font-mono font-bold">{confirmationCode}</span>
@@ -368,7 +368,7 @@ export default function BookingModal() {
                 <div className="flex flex-wrap gap-3 justify-center pt-2">
                   <a
                     href="tel:09332656724"
-                    className="inline-flex items-center gap-2 bg-[#c9a84c] hover:bg-[#d4b870] text-[#0d3330] font-semibold text-xs sm:text-sm px-6 py-3 rounded-xl transition-all shadow-md"
+                    className="inline-flex items-center gap-2 bg-[#c9a84c] hover:bg-[#d4b870] text-[#07182B] font-semibold text-xs sm:text-sm px-6 py-3 rounded-xl transition-all shadow-md"
                   >
                     <Phone size={15} /> Call Front Desk
                   </a>

@@ -25,12 +25,11 @@ function FacebookIcon({ size = 15 }) {
 
 const navLinks = [
   { label: 'Home', to: '/' },
-  { label: 'About Us', to: '/about' },
   { label: 'Rooms', to: '/rooms' },
+  { label: 'Dining', to: '/amenities' },
   { label: 'Amenities', to: '/amenities' },
   { label: 'Gallery', to: '/gallery' },
-  { label: 'Blogs', to: '/blogs' },
-  { label: 'Contact Us', to: '/contact' },
+  { label: 'Contact', to: '/contact' },
 ]
 
 export default function Navbar() {
@@ -56,28 +55,28 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── TOP UTILITY BAR (ELEGANT & DISCREET) ── */}
-      <div className="bg-[#032B25] text-[#F8F5EB]/80 text-xs py-2 px-4 border-b border-white/5 hidden md:block">
+      {/* ── TOP UTILITY BAR (DEEP NAVY & ACCENT GOLD) ── */}
+      <div className="bg-[#0B1B2B] text-[#D5D9DE] text-xs py-2 px-4 border-b border-[#D6A93D]/15 hidden md:block">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6">
             <a
               href="tel:09332656724"
-              className="flex items-center gap-2 hover:text-[#D6AD46] transition-colors duration-200"
+              className="flex items-center gap-2 hover:text-[#D6A93D] transition-colors duration-200"
             >
-              <Phone size={12} className="text-[#D6AD46]" />
-              <span className="tracking-wide">093326-56724</span>
+              <Phone size={12} className="text-[#D6A93D]" />
+              <span className="tracking-wide text-[#D5D9DE]">093326-56724</span>
             </a>
             <a
               href="mailto:info@hotelsonajhuri.com"
-              className="flex items-center gap-2 hover:text-[#D6AD46] transition-colors duration-200"
+              className="flex items-center gap-2 hover:text-[#D6A93D] transition-colors duration-200"
             >
-              <Mail size={12} className="text-[#D6AD46]" />
-              <span className="tracking-wide">info@hotelsonajhuri.com</span>
+              <Mail size={12} className="text-[#D6A93D]" />
+              <span className="tracking-wide text-[#D5D9DE]">info@hotelsonajhuri.com</span>
             </a>
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="text-[11px] uppercase tracking-wider text-[#D6AD46]/80 font-medium">
+            <span className="text-[11px] uppercase tracking-wider text-[#D6A93D] font-medium">
               New Digha, West Bengal
             </span>
             <div className="h-3 w-px bg-white/20" />
@@ -86,7 +85,7 @@ export default function Navbar() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-6 h-6 rounded flex items-center justify-center text-white/70 hover:text-[#D6AD46] transition-colors"
+                className="w-6 h-6 rounded flex items-center justify-center text-white/70 hover:text-[#D6A93D] transition-colors"
                 aria-label="Instagram"
               >
                 <InstagramIcon size={13} />
@@ -95,7 +94,7 @@ export default function Navbar() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-6 h-6 rounded flex items-center justify-center text-white/70 hover:text-[#D6AD46] transition-colors"
+                className="w-6 h-6 rounded flex items-center justify-center text-white/70 hover:text-[#D6A93D] transition-colors"
                 aria-label="Facebook"
               >
                 <FacebookIcon size={13} />
@@ -105,12 +104,12 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* ── MAIN STICKY NAVBAR ── */}
+      {/* ── MAIN STICKY NAVBAR (DEEP NAVY #10243A & TRANSPARENT TRANSITION) ── */}
       <header
         className={`sticky top-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-[#032B25]/95 backdrop-blur-xl shadow-xl shadow-black/40 border-b border-[#D6AD46]/25 py-3'
-            : 'bg-[#063B32]/45 backdrop-blur-md border-b border-white/10 py-4 sm:py-5'
+            ? 'bg-[#0B1B2B]/95 backdrop-blur-xl shadow-xl shadow-black/50 border-b border-[#D6A93D]/25 py-3'
+            : 'bg-[#10243A]/80 backdrop-blur-md border-b border-[#D6A93D]/15 py-4 sm:py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -125,37 +124,37 @@ export default function Navbar() {
               />
               <div>
                 <div
-                  className="text-[#F8F5EB] font-serif font-bold text-lg sm:text-xl leading-tight tracking-wide"
+                  className="text-[#FFFFFF] font-serif font-bold text-lg sm:text-xl leading-tight tracking-wide"
                   style={{ fontFamily: 'Playfair Display, Georgia, serif' }}
                 >
                   Hotel Sonajhuri
                 </div>
-                <div className="text-[#D6AD46] text-[9px] sm:text-[10px] tracking-[0.2em] uppercase font-medium">
-                  An unit of Hotel Priyadarshini
+                <div className="text-[#D6A93D] text-[9px] sm:text-[10px] tracking-[0.2em] uppercase font-medium">
+                  AN UNIT OF HOTEL PRIYADARSHINI
                 </div>
               </div>
             </Link>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+            <nav className="hidden lg:flex items-center gap-2 xl:gap-3">
               {navLinks.map((link) => (
                 <NavLink
-                  key={link.to}
+                  key={link.label}
                   to={link.to}
                   end={link.to === '/'}
                   className={({ isActive }) =>
-                    `relative px-3.5 py-2 text-sm font-medium tracking-wide transition-colors duration-200 group ${
-                      isActive ? 'text-[#D6AD46]' : 'text-[#F8F5EB]/85 hover:text-[#F8F5EB]'
+                    `relative px-3.5 py-2 text-sm font-serif font-medium tracking-wide transition-colors duration-200 group ${
+                      isActive ? 'text-[#D6A93D]' : 'text-[#D5D9DE] hover:text-[#FFFFFF]'
                     }`
                   }
                 >
                   {({ isActive }) => (
                     <>
                       <span>{link.label}</span>
-                      {/* Thin golden active navigation indicator */}
+                      {/* Golden hover underline animation */}
                       <span
-                        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-[#D6AD46] transition-all duration-300 rounded-full ${
-                          isActive ? 'w-3/4' : 'w-0 group-hover:w-3/4 opacity-75'
+                        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-[#D6A93D] transition-all duration-300 rounded-full ${
+                          isActive ? 'w-3/4' : 'w-0 group-hover:w-3/4 opacity-80'
                         }`}
                       />
                     </>
@@ -164,14 +163,14 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* Book Now Button (Desktop) */}
+            {/* Premium Gold Book Now Button (Desktop) */}
             <div className="hidden lg:flex items-center gap-4">
               <button
                 type="button"
                 onClick={() => openBooking()}
-                className="group relative inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full font-semibold text-xs uppercase tracking-wider text-[#032B25] overflow-hidden cursor-pointer shadow-md shadow-[#032B25]/60 transition-all duration-300 hover:shadow-lg hover:shadow-[#D6AD46]/30 hover:-translate-y-0.5 active:translate-y-0"
+                className="group relative inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full font-semibold text-xs uppercase tracking-wider text-[#10243A] overflow-hidden cursor-pointer shadow-md shadow-[#0B1B2B]/60 transition-all duration-300 hover:shadow-lg hover:shadow-[#D6A93D]/35 hover:-translate-y-0.5 active:translate-y-0 border border-[#F2CE75]/40"
                 style={{
-                  background: 'linear-gradient(135deg, #F5D77F 0%, #D6AD46 50%, #C49B38 100%)',
+                  background: 'linear-gradient(135deg, #F2CE75 0%, #D6A93D 50%, #B88928 100%)',
                 }}
               >
                 <Calendar size={14} className="transition-transform duration-300 group-hover:scale-110" />
@@ -182,7 +181,7 @@ export default function Navbar() {
             {/* Mobile Hamburger Toggle */}
             <button
               type="button"
-              className="lg:hidden p-2 text-[#F8F5EB] hover:text-[#D6AD46] transition-colors duration-200 cursor-pointer"
+              className="lg:hidden p-2 text-[#FFFFFF] hover:text-[#D6A93D] transition-colors duration-200 cursor-pointer"
               onClick={() => setMobileOpen(true)}
               aria-label="Open mobile navigation menu"
             >
@@ -192,13 +191,13 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* ── MOBILE DRAWER NAVIGATION ── */}
+      {/* ── MOBILE DRAWER NAVIGATION (MIDNIGHT NAVY) ── */}
       <AnimatePresence>
         {mobileOpen && (
           <>
             {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm"
+              className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -207,14 +206,14 @@ export default function Navbar() {
 
             {/* Slide-in Drawer */}
             <motion.aside
-              className="fixed top-0 right-0 z-50 w-80 max-w-full h-full bg-[#032B25] border-l border-[#D6AD46]/20 flex flex-col shadow-2xl text-[#F8F5EB]"
+              className="fixed top-0 right-0 z-50 w-80 max-w-full h-full bg-[#0B1B2B] border-l border-[#D6A93D]/25 flex flex-col shadow-2xl text-[#FFFFFF]"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 320, damping: 32 }}
             >
               {/* Drawer Header */}
-              <div className="flex items-center justify-between p-6 border-b border-white/10">
+              <div className="flex items-center justify-between p-6 border-b border-white/10 bg-[#10243A]">
                 <div className="flex items-center gap-3">
                   <img
                     src={logoImg}
@@ -223,20 +222,20 @@ export default function Navbar() {
                   />
                   <div>
                     <div
-                      className="text-white font-bold text-base leading-tight"
+                      className="text-[#FFFFFF] font-serif font-bold text-base leading-tight"
                       style={{ fontFamily: 'Playfair Display, Georgia, serif' }}
                     >
                       Hotel Sonajhuri
                     </div>
-                    <div className="text-[#D6AD46] text-[9px] tracking-widest uppercase">
-                      An unit of Hotel Priyadarshini
+                    <div className="text-[#D6A93D] text-[9px] tracking-widest uppercase font-medium">
+                      AN UNIT OF HOTEL PRIYADARSHINI
                     </div>
                   </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => setMobileOpen(false)}
-                  className="text-white/60 hover:text-[#D6AD46] transition-colors p-1"
+                  className="text-white/60 hover:text-[#D6A93D] transition-colors p-1"
                   aria-label="Close menu"
                 >
                   <X size={22} />
@@ -258,7 +257,7 @@ export default function Navbar() {
                       onClick={() => setMobileOpen(false)}
                       className={({ isActive }) =>
                         `block py-3.5 border-b border-white/5 text-base font-medium tracking-wide transition-colors duration-200 ${
-                          isActive ? 'text-[#D6AD46]' : 'text-white/80 hover:text-[#D6AD46]'
+                          isActive ? 'text-[#D6A93D]' : 'text-[#D5D9DE] hover:text-[#D6A93D]'
                         }`
                       }
                     >
@@ -269,19 +268,19 @@ export default function Navbar() {
               </nav>
 
               {/* Drawer Footer Contact & CTA */}
-              <div className="p-6 border-t border-white/10 space-y-3 bg-[#02211C]">
+              <div className="p-6 border-t border-[#D6A93D]/20 space-y-3 bg-[#0B1B2B]">
                 <a
                   href="tel:09332656724"
-                  className="flex items-center gap-3 text-white/80 text-sm hover:text-[#D6AD46] transition-colors"
+                  className="flex items-center gap-3 text-[#D5D9DE] text-sm hover:text-[#D6A93D] transition-colors"
                 >
-                  <Phone size={15} className="text-[#D6AD46]" />
+                  <Phone size={15} className="text-[#D6A93D]" />
                   <span>093326-56724</span>
                 </a>
                 <a
                   href="mailto:info@hotelsonajhuri.com"
-                  className="flex items-center gap-3 text-white/80 text-sm hover:text-[#D6AD46] transition-colors"
+                  className="flex items-center gap-3 text-[#D5D9DE] text-sm hover:text-[#D6A93D] transition-colors"
                 >
-                  <Mail size={15} className="text-[#D6AD46]" />
+                  <Mail size={15} className="text-[#D6A93D]" />
                   <span>info@hotelsonajhuri.com</span>
                 </a>
                 <button
@@ -290,9 +289,9 @@ export default function Navbar() {
                     setMobileOpen(false)
                     openBooking()
                   }}
-                  className="mt-4 flex items-center justify-center gap-2 w-full py-3.5 rounded-full font-semibold text-xs uppercase tracking-wider text-[#032B25] shadow-lg shadow-black/40 transition-all duration-300 cursor-pointer"
+                  className="mt-4 flex items-center justify-center gap-2 w-full py-3.5 rounded-full font-semibold text-xs uppercase tracking-wider text-[#10243A] shadow-lg shadow-black/40 transition-all duration-300 cursor-pointer"
                   style={{
-                    background: 'linear-gradient(135deg, #F5D77F 0%, #D6AD46 50%, #C49B38 100%)',
+                    background: 'linear-gradient(135deg, #F2CE75 0%, #D6A93D 50%, #B88928 100%)',
                   }}
                 >
                   <Calendar size={15} />
