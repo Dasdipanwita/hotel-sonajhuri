@@ -18,11 +18,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useBooking } from '../context/BookingContext'
 
 // Authentic Hotel Sonajhuri Photography
-import heroPoolImg from '../assets/sonajhuri-pool-hero.webp'
+import heroPoolImg from '../assets/sonajhuri-pool-hero.jpg'
 import roomImg from '../assets/gallery/room-family-double-bed.jpg'
 import deluxeRoomImg from '../assets/gallery/room-deluxe-twin.webp'
 import diningImg from '../assets/offers-02.jpg'
-import poolImg from '../assets/sonajhuri-pool-hero.webp'
+import poolImg from '../assets/sonajhuri-pool-hero.jpg'
 import gardenImg from '../assets/gallery/rooftop-garden-terrace.jpg'
 import receptionImg from '../assets/gallery/sonajhuri-reception.png'
 
@@ -41,7 +41,7 @@ function CoastalPalmSVG({ className = '', style = {} }) {
     >
       <path
         d="M20 220C40 180 80 120 180 30M180 30C150 45 120 50 90 40M180 30C165 60 160 90 170 120M140 70C115 80 90 75 70 60M140 70C130 95 135 120 150 145M105 110C85 115 65 110 50 95M105 110C95 130 100 155 115 175M75 150C60 155 45 150 35 140M75 150C70 165 75 180 85 195"
-        stroke="#D6AD46"
+        stroke="#D6A93D"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -430,14 +430,14 @@ export default function AboutSonajhuriSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-gradient-to-b from-[#07182B] via-[#040E1B] to-[#07182B] py-24 sm:py-28 lg:py-32 overflow-hidden text-[#F8F5EB]"
+      className="relative bg-gradient-to-b from-[#10243A] via-[#0B1B2B] to-[#10243A] py-24 sm:py-28 lg:py-32 overflow-hidden text-[#FFFFFF]"
       style={{ willChange: 'transform' }}
     >
       {/* ── AMBIENT BACKGROUND GLOW & BOTANICALS ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Soft Radial Gold Aura */}
-        <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D6AD46]/7 rounded-full blur-[140px]" />
-        <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-[#07182B]/60 rounded-full blur-[120px]" />
+        <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D6A93D]/7 rounded-full blur-[140px]" />
+        <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-[#0B1B2B]/60 rounded-full blur-[120px]" />
 
         {/* Ambient Botanical Palm vector line illustrations */}
         <div
@@ -465,14 +465,14 @@ export default function AboutSonajhuriSection() {
             
             {/* Small uppercase label */}
             <div className="flex items-center gap-2.5 mb-4">
-              <span className="w-6 h-px bg-gradient-to-r from-transparent to-[#D6AD46]" />
+              <span className="w-6 h-px bg-gradient-to-r from-transparent to-[#D6A93D]" />
               <p
                 ref={labelRef}
-                className="text-xs uppercase tracking-[0.25em] font-semibold text-[#D6AD46] drop-shadow-sm"
+                className="text-xs uppercase tracking-[0.25em] font-semibold text-[#D6A93D] drop-shadow-sm"
               >
                 ABOUT SONAJHURI
               </p>
-              <Sparkles size={13} className="text-[#D6AD46]/80 animate-pulse" />
+              <Sparkles size={13} className="text-[#D6A93D]/80 animate-pulse" />
             </div>
 
             {/* Main Editorial Heading */}
@@ -724,10 +724,10 @@ export default function AboutSonajhuriSection() {
           {/* ── Section Header ── */}
           <div className="text-center mb-10 sm:mb-14 relative z-10">
             {/* Tagline */}
-            <div className="inline-flex items-center justify-center gap-3 text-xs sm:text-sm font-semibold tracking-[0.28em] text-[#D6AD46] uppercase mb-3">
-              <span className="w-8 sm:w-12 h-px bg-gradient-to-r from-transparent to-[#D6AD46]/70" />
+            <div className="inline-flex items-center justify-center gap-3 text-xs sm:text-sm font-semibold tracking-[0.28em] text-[#D6A93D] uppercase mb-3">
+              <span className="w-8 sm:w-12 h-px bg-gradient-to-r from-transparent to-[#D6A93D]/70" />
               <span>HOTEL SONAJHURI</span>
-              <span className="w-8 sm:w-12 h-px bg-gradient-to-l from-transparent to-[#D6AD46]/70" />
+              <span className="w-8 sm:w-12 h-px bg-gradient-to-l from-transparent to-[#D6A93D]/70" />
             </div>
 
             {/* Main Heading */}
@@ -735,32 +735,32 @@ export default function AboutSonajhuriSection() {
               className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-bold text-white tracking-tight"
               style={{ fontFamily: 'Playfair Display, Georgia, serif' }}
             >
-              Our Premium <span className="text-[#D6AD46] italic">Amenities</span>
+              Our Premium <span className="text-[#D6A93D] italic">Amenities</span>
             </h2>
 
             {/* Subtitle */}
-            <p className="text-[#F8F5EB]/85 italic text-sm sm:text-base md:text-lg mt-2.5 font-serif max-w-xl mx-auto">
+            <p className="text-[#D5D9DE] italic text-sm sm:text-base md:text-lg mt-2.5 font-serif max-w-xl mx-auto">
               Experience the perfect blend of luxury and comfort.
             </p>
 
             {/* Golden Diamond Divider */}
             <div className="flex items-center justify-center gap-3 mt-4">
-              <span className="w-16 sm:w-24 h-px bg-gradient-to-r from-transparent via-[#D6AD46]/50 to-[#D6AD46]" />
-              <span className="w-2.5 h-2.5 rotate-45 border border-[#D6AD46] bg-[#D6AD46]/40 shadow-[0_0_8px_rgba(214,173,70,0.6)]" />
-              <span className="w-16 sm:w-24 h-px bg-gradient-to-l from-transparent via-[#D6AD46]/50 to-[#D6AD46]" />
+              <span className="w-16 sm:w-24 h-px bg-gradient-to-r from-transparent via-[#D6A93D]/50 to-[#D6A93D]" />
+              <span className="w-2.5 h-2.5 rotate-45 border border-[#D6A93D] bg-[#D6A93D]/40 shadow-[0_0_8px_rgba(214,169,61,0.6)]" />
+              <span className="w-16 sm:w-24 h-px bg-gradient-to-l from-transparent via-[#D6A93D]/50 to-[#D6A93D]" />
             </div>
           </div>
 
           {/* ── Connected 5-Cards Showcase ── */}
           <div className="relative w-full px-2 sm:px-6 lg:px-8">
             {/* Horizontal Golden Connecting Guide Line */}
-            <div className="absolute top-[46%] left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#D6AD46]/40 to-transparent pointer-events-none hidden lg:block z-0" />
+            <div className="absolute top-[46%] left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#D6A93D]/40 to-transparent pointer-events-none hidden lg:block z-0" />
 
             {/* Left Navigation Arrow */}
             <button
               onClick={handlePrevAmenity}
               aria-label="Previous amenity"
-              className="absolute -left-2 sm:-left-4 lg:-left-5 top-[46%] -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#D6AD46]/60 bg-[#07182B]/85 backdrop-blur-md text-[#D6AD46] hover:bg-[#D6AD46] hover:text-[#040E1B] flex items-center justify-center transition-all duration-300 shadow-xl shadow-black/60 hover:scale-110 z-20 cursor-pointer"
+              className="absolute -left-2 sm:-left-4 lg:-left-5 top-[46%] -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#D6A93D]/60 bg-[#10243A]/90 backdrop-blur-md text-[#D6A93D] hover:bg-[#D6A93D] hover:text-[#10243A] flex items-center justify-center transition-all duration-300 shadow-xl shadow-black/60 hover:scale-110 z-30 cursor-pointer"
             >
               <ChevronLeft size={22} />
             </button>
@@ -769,12 +769,12 @@ export default function AboutSonajhuriSection() {
             <button
               onClick={handleNextAmenity}
               aria-label="Next amenity"
-              className="absolute -right-2 sm:-right-4 lg:-right-5 top-[46%] -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#D6AD46]/60 bg-[#07182B]/85 backdrop-blur-md text-[#D6AD46] hover:bg-[#D6AD46] hover:text-[#040E1B] flex items-center justify-center transition-all duration-300 shadow-xl shadow-black/60 hover:scale-110 z-20 cursor-pointer"
+              className="absolute -right-2 sm:-right-4 lg:-right-5 top-[46%] -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#D6A93D]/60 bg-[#10243A]/90 backdrop-blur-md text-[#D6A93D] hover:bg-[#D6A93D] hover:text-[#10243A] flex items-center justify-center transition-all duration-300 shadow-xl shadow-black/60 hover:scale-110 z-30 cursor-pointer"
             >
               <ChevronRight size={22} />
             </button>
 
-            {/* 5 Cards Row */}
+            {/* 5 Cards Row - Inactive cards are blurred, active clicked card is unblurred */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-3.5 xl:gap-4 relative z-10">
               {amenitiesData.map((item, index) => {
                 const Icon = item.icon
@@ -785,25 +785,26 @@ export default function AboutSonajhuriSection() {
                     key={item.id}
                     ref={(el) => (amenityItemsRef.current[index] = el)}
                     onClick={() => setActiveAmenityIdx(index)}
-                    className={`group relative rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-500 cursor-pointer ${
+                    className={`group relative rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-500 cursor-pointer select-none ${
                       isActive
-                        ? 'border-2 border-[#D6AD46] bg-gradient-to-b from-[#102947] via-[#091E36] to-[#061426] shadow-[0_0_28px_rgba(214,173,70,0.45),0_20px_35px_rgba(0,0,0,0.85)] scale-[1.02] -translate-y-2'
-                        : 'border border-[#D6AD46]/25 bg-gradient-to-b from-[#0B1E36]/90 via-[#07182B]/90 to-[#040E1B]/95 hover:border-[#D6AD46]/70 hover:-translate-y-1.5 hover:shadow-lg'
+                        ? 'border-2 border-[#D6A93D] bg-gradient-to-b from-[#142B40] via-[#0B1B2B] to-[#10243A] shadow-[0_0_30px_rgba(214,169,61,0.5),0_20px_35px_rgba(0,0,0,0.85)] scale-[1.03] -translate-y-2.5 z-20 opacity-100 filter-none'
+                        : 'border border-[#D6A93D]/20 bg-gradient-to-b from-[#142B40]/70 via-[#0B1B2B]/80 to-[#10243A]/90 hover:border-[#D6A93D]/50 hover:opacity-80 scale-[0.98] z-10 opacity-45 blur-[3.5px] hover:blur-[1.5px]'
                     }`}
+                    style={{ willChange: 'filter, transform, opacity' }}
                   >
                     {/* Active Top Golden Halo Line */}
                     {isActive && (
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#F2D28B] to-transparent z-10 shadow-[0_0_10px_#F2D28B]" />
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#F2CE75] to-transparent z-10 shadow-[0_0_10px_#F2CE75]" />
                     )}
 
                     {/* Top Content Area */}
                     <div className="p-4 sm:p-5 flex flex-col items-center text-center">
                       {/* Circular Gold Icon Ring */}
                       <div
-                        className={`relative w-14 h-14 sm:w-15 sm:h-15 rounded-full border flex items-center justify-center text-[#D6AD46] mb-3.5 transition-all duration-300 ${
+                        className={`relative w-14 h-14 sm:w-15 sm:h-15 rounded-full border flex items-center justify-center text-[#D6A93D] mb-3.5 transition-all duration-300 ${
                           isActive
-                            ? 'border-2 border-[#D6AD46] bg-[#07182B] shadow-[0_0_16px_rgba(214,173,70,0.4)] scale-105'
-                            : 'border-[#D6AD46]/45 bg-[#07182B]/80 group-hover:border-[#D6AD46] group-hover:scale-105'
+                            ? 'border-2 border-[#D6A93D] bg-[#10243A] shadow-[0_0_16px_rgba(214,169,61,0.4)] scale-105'
+                            : 'border-[#D6A93D]/45 bg-[#10243A]/80 group-hover:border-[#D6A93D] group-hover:scale-105'
                         }`}
                       >
                         <Icon size={24} className="transition-transform duration-300 group-hover:rotate-6" />
@@ -818,12 +819,12 @@ export default function AboutSonajhuriSection() {
                       </h3>
 
                       {/* Subtitle */}
-                      <p className="text-xs sm:text-[13px] text-[#D6AD46] font-medium tracking-wide">
+                      <p className="text-xs sm:text-[13px] text-[#D6A93D] font-medium tracking-wide">
                         {item.desc}
                       </p>
 
                       {/* Gold Divider */}
-                      <div className="w-8 h-px bg-[#D6AD46]/50 mt-3 mb-1" />
+                      <div className="w-8 h-px bg-[#D6A93D]/50 mt-3 mb-1" />
                     </div>
 
                     {/* Bottom Photograph */}
@@ -835,7 +836,7 @@ export default function AboutSonajhuriSection() {
                         loading="lazy"
                       />
                       {/* Subtle Vignette Gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#061426]/75 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B2B]/85 via-transparent to-transparent pointer-events-none" />
                     </div>
                   </div>
                 )
@@ -852,8 +853,8 @@ export default function AboutSonajhuriSection() {
                 aria-label={`Go to amenity ${idx + 1}`}
                 className={`transition-all duration-300 cursor-pointer ${
                   idx === activeAmenityIdx
-                    ? 'w-8 h-1.5 rounded-full bg-[#D6AD46] shadow-[0_0_10px_#D6AD46]'
-                    : 'w-2 h-1.5 rounded-full bg-[#D6AD46]/35 hover:bg-[#D6AD46]/70'
+                    ? 'w-8 h-1.5 rounded-full bg-[#D6A93D] shadow-[0_0_10px_#D6A93D]'
+                    : 'w-2 h-1.5 rounded-full bg-[#D6A93D]/35 hover:bg-[#D6A93D]/70'
                 }`}
               />
             ))}
@@ -861,18 +862,18 @@ export default function AboutSonajhuriSection() {
 
           {/* ── Scroll To Explore with Animated Mouse Icon ── */}
           <div className="flex flex-col items-center justify-center mt-3 text-center">
-            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-[#D6AD46]/90 mb-2">
+            <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-[#D6A93D]/90 mb-2">
               SCROLL TO EXPLORE
             </span>
-            <div className="w-4 h-6 rounded-full border border-[#D6AD46]/70 flex items-start justify-center p-1">
-              <div className="w-1 h-1.5 rounded-full bg-[#D6AD46] animate-bounce" />
+            <div className="w-4 h-6 rounded-full border border-[#D6A93D]/70 flex items-start justify-center p-1">
+              <div className="w-1 h-1.5 rounded-full bg-[#D6A93D] animate-bounce" />
             </div>
           </div>
         </div>
 
       </div>
 
-      {/* ── BOTTOM CURVED WAVE DIVIDER (Exact Match to Screenshot 2) ── */}
+      {/* ── BOTTOM CURVED WAVE DIVIDER ── */}
       <div className="w-full overflow-hidden leading-none -mb-24 sm:-mb-28 lg:-mb-32 mt-10 pointer-events-none relative z-10">
         <svg
           viewBox="0 0 1200 120"
@@ -882,13 +883,13 @@ export default function AboutSonajhuriSection() {
           {/* Solid Fill to merge seamlessly into next section */}
           <path
             d="M0,15 C300,90 900,90 1200,15 L1200,120 L0,120 Z"
-            fill="#061426"
+            fill="#0B1B2B"
           />
           {/* Golden Stroke on the curve only */}
           <path
             d="M0,15 C300,90 900,90 1200,15"
             fill="none"
-            stroke="#D6AD46"
+            stroke="#D6A93D"
             strokeWidth="2"
           />
         </svg>

@@ -6,9 +6,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useBooking } from '../context/BookingContext'
 
 // Authentic Hotel Sonajhuri Photography
-import rooftopGardenHeroImg from '../assets/gallery/rooftop-garden-terrace.jpg'
-import heroPoolImg from '../assets/sonajhuri-pool-hero.webp'
-import roomHeroImg from '../assets/gallery/room-deluxe-twin.webp'
+import rooftopDiningHeroImg from '../assets/hero-rooftop-dining-reference.jpg'
+import heroPoolImg from '../assets/hero-pool-reference.jpg'
+import roomHeroImg from '../assets/hero-rooms-reference.jpg'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -16,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger)
 const slides = [
   {
     id: 'new-digha',
-    img: rooftopGardenHeroImg,
+    img: rooftopDiningHeroImg,
     label: 'HOTEL SONAJHURI',
     titlePrefix: 'Hotel in ',
     highlight: 'New Digha',
