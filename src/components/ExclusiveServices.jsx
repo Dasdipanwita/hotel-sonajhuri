@@ -22,7 +22,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useBooking } from '../context/BookingContext'
 
 // Authentic Hotel Sonajhuri Photography
-import roomImg from '../assets/gallery/room-deluxe-twin.webp'
+import roomImg from '../assets/gallery/room-deluxe-luxury-new.jpg'
 import diningImg from '../assets/offers-02.jpg'
 import poolImg from '../assets/sonajhuri-pool-hero.webp'
 import seaViewImg from '../assets/gallery/rooftop-garden-terrace.jpg'

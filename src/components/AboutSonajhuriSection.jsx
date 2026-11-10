@@ -20,7 +20,7 @@ import { useBooking } from '../context/BookingContext'
 // Authentic Hotel Sonajhuri Photography
 import heroPoolImg from '../assets/sonajhuri-pool-hero.jpg'
 import roomImg from '../assets/gallery/room-family-double-bed.jpg'
-import deluxeRoomImg from '../assets/gallery/room-deluxe-twin.webp'
+import deluxeRoomImg from '../assets/gallery/room-deluxe-luxury-new.jpg'
 import diningImg from '../assets/offers-02.jpg'
 import poolImg from '../assets/sonajhuri-pool-hero.jpg'
 import gardenImg from '../assets/gallery/rooftop-garden-terrace.jpg'

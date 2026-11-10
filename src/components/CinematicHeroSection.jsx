@@ -6,9 +6,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useBooking } from '../context/BookingContext'
 
 // Authentic Hotel Sonajhuri Photography
-import rooftopDiningHeroImg from '../assets/hero-rooftop-dining-reference.jpg'
+import rooftopSunsetHeroImg from '../assets/hero-rooftop-sunset.webp'
 import heroPoolImg from '../assets/hero-pool-reference.jpg'
-import roomHeroImg from '../assets/hero-rooms-reference.jpg'
+import roomHeroImg from '../assets/hero-rooms-luxury.jpg'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -24,10 +24,9 @@ const slides = [
     subtitle: 'Unwind at our rooftop pool with stunning sea-breeze views.',
     objectPosition: 'center 85%',
     overlayGradient:
-      'linear-gradient(180deg, rgba(7, 24, 43, 0.20) 0%, rgba(7, 24, 43, 0.32) 42%, rgba(7, 24, 43, 0.65) 100%)',
+      'linear-gradient(180deg, rgba(16, 36, 58, 0.20) 0%, rgba(11, 27, 43, 0.32) 42%, rgba(11, 27, 43, 0.65) 100%)',
     vignetteGradient:
-      'radial-gradient(ellipse at center, rgba(7, 24, 43, 0.04) 0%, rgba(7, 24, 43, 0.45) 100%)',
-    contentOffset: 'translate-y-4 sm:translate-y-6 md:translate-y-10',
+      'radial-gradient(ellipse at center, rgba(16, 36, 58, 0.04) 0%, rgba(11, 27, 43, 0.45) 100%)',
   },
   {
     id: 'rooms-suites',
@@ -37,27 +36,32 @@ const slides = [
     highlight: 'Suites',
     titleSuffix: '',
     subtitle: 'Spacious, stylish, and curated for an unforgettable seaside retreat.',
-    objectPosition: 'center 42%',
+    objectPosition: 'center center',
     overlayGradient:
-      'linear-gradient(180deg, rgba(7, 24, 43, 0.20) 0%, rgba(7, 24, 43, 0.25) 45%, rgba(7, 24, 43, 0.55) 100%)',
+      'linear-gradient(180deg, rgba(16, 36, 58, 0.18) 0%, rgba(11, 27, 43, 0.28) 45%, rgba(11, 27, 43, 0.65) 100%)',
     vignetteGradient:
-      'radial-gradient(ellipse at center, rgba(7, 24, 43, 0.0) 0%, rgba(7, 24, 43, 0.38) 100%)',
+      'radial-gradient(ellipse at center, rgba(16, 36, 58, 0.0) 0%, rgba(11, 27, 43, 0.40) 100%)',
   },
   {
     id: 'new-digha',
-    img: rooftopDiningHeroImg,
+    img: rooftopSunsetHeroImg,
     label: 'HOTEL SONAJHURI',
     titlePrefix: 'Hotel in ',
     highlight: 'New Digha',
     titleSuffix: '',
     subtitle: 'A tranquil coastal escape by the sea — where comfort meets timeless elegance.',
-    objectPosition: 'center 40%',
+    objectPosition: 'center center',
+    overlayGradient:
+      'linear-gradient(180deg, rgba(16, 36, 58, 0.20) 0%, rgba(11, 27, 43, 0.32) 42%, rgba(11, 27, 43, 0.65) 100%)',
+    vignetteGradient:
+      'radial-gradient(ellipse at center, rgba(16, 36, 58, 0.04) 0%, rgba(11, 27, 43, 0.45) 100%)',
+    contentOffset: 'translate-y-4 sm:translate-y-6 md:translate-y-10',
   },
 ]
 
 export default function CinematicHeroSection() {
   const [current, setCurrent] = useState(0)
-  const [isPaused, setIsPaused] = useState(false)
+
   const { openBooking } = useBooking()
 
   const heroContainerRef = useRef(null)
@@ -75,12 +79,12 @@ export default function CinematicHeroSection() {
   // SLIDER AUTOPLAY (6s, Pauses on interaction)
   // ─────────────────────────────────────────────
   useEffect(() => {
-    if (isPaused) return
+
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length)
-    }, 6000)
+    }, 3000)
     return () => clearInterval(timer)
-  }, [isPaused])
+  }, [current])
 
   const nextSlide = useCallback(() => {
     setCurrent((prev) => (prev + 1) % slides.length)
@@ -208,8 +212,8 @@ export default function CinematicHeroSection() {
   return (
     <section
       ref={heroContainerRef}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+
+
       className="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-between overflow-hidden bg-[#07182B] text-[#F8F4EA]"
       aria-label="Hotel Sonajhuri Luxury Hero Showcase"
     >
@@ -241,7 +245,7 @@ export default function CinematicHeroSection() {
                 style={{
                   background:
                     s.overlayGradient ||
-                    'linear-gradient(180deg, rgba(7, 24, 43, 0.28) 0%, rgba(7, 24, 43, 0.36) 45%, rgba(7, 24, 43, 0.70) 100%)',
+                    'linear-gradient(180deg, rgba(16, 36, 58, 0.28) 0%, rgba(11, 27, 43, 0.36) 45%, rgba(11, 27, 43, 0.70) 100%)',
                 }}
               />
 
@@ -251,7 +255,7 @@ export default function CinematicHeroSection() {
                 style={{
                   background:
                     s.vignetteGradient ||
-                    'radial-gradient(ellipse at center, rgba(7, 24, 43, 0.05) 0%, rgba(7, 24, 43, 0.50) 100%)',
+                    'radial-gradient(ellipse at center, rgba(16, 36, 58, 0.05) 0%, rgba(11, 27, 43, 0.50) 100%)',
                 }}
               />
             </div>
